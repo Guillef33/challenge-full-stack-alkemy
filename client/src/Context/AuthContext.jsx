@@ -40,12 +40,11 @@ const AuthProvider = (props) => {
     }
 
     Swal.fire({
-title: "Todo bien",
-text: "Bienvenido a Facturas App",
-icon: "sucess",
-confirmButtonText: "Ingresa"
-})
-
+      title: "Todo bien",
+      text: "Bienvenido a Facturas App",
+      icon: "sucess",
+      confirmButtonText: "Ingresa"
+      })
 
   }
 
@@ -76,6 +75,8 @@ confirmButtonText: "Ingresa"
     })
     } else {
      navigate("/dashboard");
+      setLoginStatus(response.data.[0].email)
+
 
     }
 
