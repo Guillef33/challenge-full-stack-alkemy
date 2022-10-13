@@ -12,15 +12,23 @@ function SelectorDeCategorias() {
 
   const {
     selectCategoria,
+    filterWithCategory,
   } = useContext(FacturasContext);
 
   const [seleccion, setSeleccion] = useState('entretenimiento');
 
   const handleChange = (event) => {
     setSeleccion(event.target.value);
-    console.log(seleccion)
-     selectCategoria(seleccion)
+    selectCategoria(seleccion)
+    filterWithCategory(event.target.value)
   };
+
+  //   const selectCategoryFromInput = (e) => {
+  //   console.log("se ejecuta");
+  //   console.log(e.target.value)
+  //   setCategoria(e.target.value)
+  //   selectCategoria(categoria)
+  // };
 
 
   return (
@@ -42,25 +50,6 @@ function SelectorDeCategorias() {
       </FormControl>
     </Box>
 
-
-    // <TableCell align="right">
-    //     <FormControl variant="outlined">
-    //     <InputLabel htmlFor="outlined-age-native-simple">
-    //         Categorias
-    //     </InputLabel>
-    //     <Select
-    //         native
-    //         label="Value"
-    //         value={categoria}
-    //         onChange={selectCategoryFromInput}
-    //     >
-    //         <option aria-label="None" value="" />
-    //         {categorias.map((categoria, index) => (
-    //         <option key={index}>{categoria}</option>
-    //         ))}
-    //     </Select> 
-    //     </FormControl>
-    // </TableCell>
   )
 }
 

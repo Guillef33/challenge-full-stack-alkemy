@@ -14,9 +14,23 @@ const FacturasProvider = (props) => {
   
   const [showIngresos, setShowIngresos] = useState(false);
   const [showEgresos, setShowEgresos] = useState(false);
-  const [showModal, setShowModal] = useState(false);
-  const [showComida, setShowComida] = useState(false)
+  const [showModal, setShoworydal] = useState(false);
+  const [showComida, setShowComida] = useState(false);
+  /* Flags para mostrar una cosa u otra filtrada por categoria */
+  const [filterCategory, setFilterCategory] = useState('');
+  const [dataFilterCategory, setDataFilterCategory] = useState([]);
+  const [showDataFilterCategory, setShowDataFilterCategory] = useState(false)
 
+  const [categorias, setCategorias] = useState([
+    "entretenimiento",
+    "hogar",
+    "comida",
+  ]);
+  const [categoria, setCategoria] = useState("");
+  const [categoriaSeleccionada, setCategoriaSeleccionada] = useState([])
+  const [comidas, setComidas] = useState([]);
+
+  const [showCategoria, setShowCategoria] = useState(false)
 
   function cancelarTurno(id) {
     Axios.delete(`http://localhost:3050/delete/${id}`, {}).then((response) => {
@@ -78,27 +92,26 @@ const FacturasProvider = (props) => {
     return listado;
   };
 
+  const filterWithCategory = (category) => {
+    let listado = listaFacturas.filter((data) => data.categoria === category);
+
+    console.log(listado, "Datos filtrado por category");
+
+    setShowEgresos(false);
+    setShowIngresos(false);
+    setShowDataFilterCategory(true);
+    setDataFilterCategory(listado)
+    return
+  };
 
 
 
-  const [categorias, setCategorias] = useState([
-    "entretenimiento",
-    "hogar",
-    "comida",
-  ]);
-  const [categoria, setCategoria] = useState("");
-  const [categoriaSeleccionada, setCategoriaSeleccionada] = useState([])
-  const [comidas, setComidas] = useState([]);
+
 
   const selectCategoria = (valorDeCategoria) => {
-
-    console.log(valorDeCategoria);
-
     let categoriaSeleccionada = listaFacturas.filter(
       (seleccionada) => seleccionada.categoria === valorDeCategoria
     );
-
-    console.log(categoriaSeleccionada);
     return categoriaSeleccionada;
   };
 
@@ -184,8 +197,6 @@ const FacturasProvider = (props) => {
         filterIngresos,
         filterEgresos,
         listaFacturas,
-        showModal,
-        setShowModal,
         updateFactura,
         showIngresos,
         showEgresos,
@@ -194,13 +205,19 @@ const FacturasProvider = (props) => {
         setShowComida,
         comidas,
         setComidas,
-         categoria,
-    categorias,
-    selectCategoria,
-    setCategoria,
-    setCategorias,
-    categoriaSeleccionada,
-    setCategoriaSeleccionada
+        categoria,
+        categorias,
+        selectCategoria,
+        setCategoria,
+        setCategorias,
+        categoriaSeleccionada,
+        setCategoriaSeleccionada,
+        showCategoria,
+        setShowCategoria,
+        filterWithCategory,
+        dataFilterCategory,
+        filterCategory,
+        showDataFilterCategory,
       }}
     >
       {props.children}

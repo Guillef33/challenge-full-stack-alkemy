@@ -19,93 +19,75 @@ const AuthProvider = (props) => {
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
   const loginValidations = (email, password) => {
-        if (email === "" || password === "") {
-     Swal.fire({
-      title: 'Error!',
-      text: 'Los campos no pueden estar vacios',
-      icon: 'error',
-      confirmButtonText: 'Cool'
-    })
+      if (email === "" || password === "") {
+      Swal.fire({
+        title: 'Error!',
+        text: 'Los campos no pueden estar vacios',
+        icon: 'error',
+        confirmButtonText: 'Cool'
+      })
       return;
     }
 
     if (email === "" && !regexEmail.test(email)) {
-     Swal.fire({
-      title: 'Error!',
-      text: 'Debes escribir una direccion de correo electronico valida',
-      icon: 'error',
-      confirmButtonText: 'Cool'
-    })
+      Swal.fire({
+        title: 'Error!',
+        text: 'Debes escribir una direccion de correo electronico valida',
+        icon: 'error',
+        confirmButtonText: 'Cool'
+      })
       return;
     }
 
     Swal.fire({
       title: "Todo bien",
       text: "Bienvenido a Facturas App",
-      icon: "sucess",
+      icon: "success",
       confirmButtonText: "Ingresa"
-      })
+    })
 
   }
 
-    const [loginStatus, setLoginStatus] = useState("");
+  const [loginStatus, setLoginStatus] = useState("");
 
 
   const loginWeb = (e) => {
-  e.preventDefault();
-  const email = e.target.email.value;
-  const password = e.target.password.value;
-  console.log(email, password)
-  loginValidations(email, password)
-  setUser(email, password)
-  // console.log('Estoy aca')
-  Axios.post("http://localhost:3050/login", {
-    email: email,
-    password: password,
-  }).then((response) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    console.log(email, password)
+    loginValidations(email, password)
+    setUser(email, password)
+    // console.log('Estoy aca')
+    Axios.post("http://localhost:3050/login", {
+      email: email,
+      password: password,
+    }).then((response) => {
+
     console.log(response.data)
 
     if (response.data.message) {
       setLoginStatus(response.data.message)
-        Swal.fire({
-      title: 'Error!',
-      text: `${response.data.message}`,
-      icon: 'error',
-      confirmButtonText: 'Cool'
-    })
+      Swal.fire({
+        title: 'Error!',
+        text: `${response.data.message}`,
+        icon: 'error',
+        confirmButtonText: 'Cool'
+      })
     } else {
-     navigate("/dashboard");
-      setLoginStatus(response.data.[0].email)
-
-
+      navigate("/dashboard")
+      // setLoginStatus(response.data.[0].email)
     }
-
-  });
-  };
-
-  const logout = () => {
-    setUser(null)
+  })
   }
 
-  const auth = {
-    user
-  }
-
-  // function useAuth () {
-  //  const auth = useContext(AuthContext)
-  //  return auth;
-  // }
-
- 
 
   return (
     <AuthContext.Provider
       value={{
-        auth,
         loginValidations,
         user,
         loginWeb
-      
       }}
     >
       {props.children}

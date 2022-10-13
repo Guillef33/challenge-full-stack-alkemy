@@ -232,26 +232,6 @@ app.post("/login", (req, res) => {
 });
 
 
-// app.post("/register", (req, res) => {
-//   res.send("We are here");
-//   const username = req.body.username;
-//   const password = req.body.password;
-//   const email = req.body.email;
-
-//   bcrypt.hash(password, saltRounds, (err, hash) => {
-//     if (err) {
-//       console.log(err);
-//     }
-//     connection.query(
-//       "INSERT INTO usuarios (username, password, email) VALUES (?,?, ?)",
-//       [username, hash, email],
-//       (err, result) => {
-//         console.log(err);
-//       }
-//     );
-//   });
-// });
-
 // Check Connect
 connection.connect((error) => {
   if (error) throw error;

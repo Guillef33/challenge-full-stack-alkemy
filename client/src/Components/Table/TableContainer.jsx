@@ -49,18 +49,17 @@ function TableContainerMaster() {
     setCategorias,
     setCategoria,
     selectCategoria,
-        categoriaSeleccionada,
-    setCategoriaSeleccionada
+    categoriaSeleccionada,
+    setCategoriaSeleccionada,
+    dataFilterCategory,
+    filterCategory,
+    showDataFilterCategory,
+    filterWithCategory,
   } = useContext(FacturasContext);
 
-  const selectCategoryFromInput = (e) => {
-    console.log("se ejecuta");
-    console.log(e.target.value)
-    setCategoria(e.target.value)
-    selectCategoria(categoria)
-  };
 
-    console.log(categoria)
+
+  console.log(comidas)
 
   return (
     <TableContainer component={Paper}>
@@ -76,12 +75,8 @@ function TableContainerMaster() {
             <TableCell align="right">
               <Button onClick={showAll}>Ver todo</Button>
             </TableCell>
-            <TableCell align="right">
-              <Button onClick={filterComidas}>Ver solo comidas</Button>
-            </TableCell>
 
             <SelectorDeCategorias />
-
 
           </TableRow>
 
@@ -96,20 +91,18 @@ function TableContainerMaster() {
           </TableRow>
         </TableHead>
         <TableBody>
+        {/* Si algunos de las flags de ingresos o egresos estan active, mostrar uno u otro no todos  */}
+        {
+          (showIngresos || showEgresos ) && <RowMap lista={showIngresos ? ingresos : egresos} editFactura={editFactura} />
+        }
+        {/* Si no estan activos ningún filtro mostras todos los datos */}
+        {
+          (!showIngresos && !showEgresos && !showDataFilterCategory )  && <RowMap lista={listaFacturas} editFactura={editFactura} />
+        }
+        {
+          showDataFilterCategory && <RowMap lista={dataFilterCategory} editFactura={editFactura} />
+        }
 
-       {showIngresos ? (
-            <RowMap lista={ingresos} editFactura={editFactura} />
-          ) : 
-        showEgresos ? (
-            <RowMap lista={egresos} editFactura={editFactura} />
-          ) 
-          : showComida ? (
-            <RowMap lista={categoriaSeleccionada} editFactura={editFactura} />
-          ) 
-          : (
-            <RowMap lista={listaFacturas} editFactura={editFactura} />
-          )
-         }
         </TableBody>
       </Table>
     </TableContainer>
