@@ -93,14 +93,14 @@ function TableContainerMaster() {
         <TableBody>
         {/* Si algunos de las flags de ingresos o egresos estan active, mostrar uno u otro no todos  */}
         {
-          (showIngresos || showEgresos ) && <RowMap lista={showIngresos ? ingresos : egresos} editFactura={editFactura} />
+          (showIngresos || showEgresos ) && <RowMap lista={showIngresos ? ingresos : egresos} />
         }
         {/* Si no estan activos ningún filtro mostras todos los datos */}
         {
-          (!showIngresos && !showEgresos && !showDataFilterCategory )  && <RowMap lista={listaFacturas} editFactura={editFactura} />
+          (!showIngresos && !showEgresos && !showDataFilterCategory )  && <RowMap lista={listaFacturas} />
         }
         {
-          showDataFilterCategory && <RowMap lista={dataFilterCategory} editFactura={editFactura} />
+          showDataFilterCategory && <RowMap lista={dataFilterCategory} />
         }
 
         </TableBody>

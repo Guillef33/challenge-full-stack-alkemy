@@ -32,6 +32,9 @@ const FacturasProvider = (props) => {
 
   const [showCategoria, setShowCategoria] = useState(false)
 
+  /* Factura seleccionada */
+  const [selectFacturaEdit, setSelectFacturaEdit ] = useState([]);
+
   function cancelarTurno(id) {
     Axios.delete(`http://localhost:3050/delete/${id}`, {}).then((response) => {
       console.log(response);
@@ -59,7 +62,7 @@ const FacturasProvider = (props) => {
     
     setShowIngresos(!showIngresos);
     setShowEgresos(false);
-
+    setShowDataFilterCategory(false);
     setIngresos(listado)
     return listado;
   };
@@ -70,27 +73,12 @@ const FacturasProvider = (props) => {
 
     setShowEgresos(!showEgresos);
     setShowIngresos(false);
-
+    setShowDataFilterCategory(false);
     setEgresos(listado)
 
     return listado;
   };
   // Categorias
-
-  const filterComidas = () => {
-
-    let listado = listaFacturas.filter((comida) => comida.categoria === "comida");
-
-    console.log(listado, "comida");
-
-    setShowEgresos(false);
-    setShowIngresos(false);
-
-    setShowComida(!showComida)
-
-    setComida(listado)
-    return listado;
-  };
 
   const filterWithCategory = (category) => {
     let listado = listaFacturas.filter((data) => data.categoria === category);
@@ -103,10 +91,6 @@ const FacturasProvider = (props) => {
     setDataFilterCategory(listado)
     return
   };
-
-
-
-
 
   const selectCategoria = (valorDeCategoria) => {
     let categoriaSeleccionada = listaFacturas.filter(
@@ -136,23 +120,24 @@ const FacturasProvider = (props) => {
   const showAll = () => {
     setShowEgresos(false);
     setShowIngresos(false);
+    setShowDataFilterCategory(false);
   };
 
-  function editFactura(id) {
-    console.log(id);
-    setShowModal(true);
+  // function editFactura(id) {
+  //   console.log(id);
+  //   setShowModal(true);
 
-    Axios.put(`http://localhost:3050/update/${id}`, {
-      concepto: "Trabajos de carpinteria",
-      fecha: "29/02/22",
-      monto: "2000",
-      tipo: "egreso",
-      categoria: "hogar",
-      id: 1,
-    }).then((response) => {
-      console.log(response);
-    });
-  }
+  //   Axios.put(`http://localhost:3050/update/${id}`, {
+  //     concepto: "Trabajos de carpinteria",
+  //     fecha: "29/02/22",
+  //     monto: "2000",
+  //     tipo: "egreso",
+  //     categoria: "hogar",
+  //     id: 1,
+  //   }).then((response) => {
+  //     console.log(response);
+  //   });
+  // }
 
   const updateFactura = (id, form) => {
     const concepto = form.concepto;
@@ -192,7 +177,6 @@ const FacturasProvider = (props) => {
         setEgresos,
         cancelarTurno,
         showAll,
-        editFactura,
         getFacturas,
         filterIngresos,
         filterEgresos,
@@ -200,9 +184,6 @@ const FacturasProvider = (props) => {
         updateFactura,
         showIngresos,
         showEgresos,
-        filterComidas,
-        showComida,
-        setShowComida,
         comidas,
         setComidas,
         categoria,
@@ -218,6 +199,8 @@ const FacturasProvider = (props) => {
         dataFilterCategory,
         filterCategory,
         showDataFilterCategory,
+        setSelectFacturaEdit,
+        selectFacturaEdit,
       }}
     >
       {props.children}

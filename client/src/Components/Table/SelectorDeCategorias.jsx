@@ -23,13 +23,6 @@ function SelectorDeCategorias() {
     filterWithCategory(event.target.value)
   };
 
-  //   const selectCategoryFromInput = (e) => {
-  //   console.log("se ejecuta");
-  //   console.log(e.target.value)
-  //   setCategoria(e.target.value)
-  //   selectCategoria(categoria)
-  // };
-
 
   return (
 

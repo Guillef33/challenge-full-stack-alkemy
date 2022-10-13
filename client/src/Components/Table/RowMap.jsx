@@ -7,7 +7,7 @@ import TableCard from './TableCard'
 import { FacturasContext } from '../../Context/FacturasContext';
 
 
-function RowMap( {lista, editarTurno, cancelarTurno, ingresos, egresos, showModal, setShowModal} ) {
+function RowMap( {lista, ingresos, egresos, showModal, setShowModal} ) {
 
      // Export como XLS
     const handleExport = () => {
@@ -32,7 +32,7 @@ function RowMap( {lista, editarTurno, cancelarTurno, ingresos, egresos, showModa
   }
 
   useEffect(() => {     
-  sumarMonto(lista)
+    sumarMonto(lista)
   }, [lista])
 
   // console.log(lista)
@@ -41,7 +41,7 @@ function RowMap( {lista, editarTurno, cancelarTurno, ingresos, egresos, showModa
         <>
     {lista.map((item, index) => (
 
-      <TableCard item={item} editarTurno={editarTurno} cancelarTurno={cancelarTurno} showModal={showModal} setShowModal={setShowModal} key={index}/>    
+      <TableCard item={item} key={index}/>    
     ))}
       <TableRow>
         <TableCell>Total:</TableCell>

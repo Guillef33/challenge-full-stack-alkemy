@@ -15,13 +15,21 @@ import { Link } from "react-router-dom";
 
 function TableCard( { item}) {
 
- const {
- cancelarTurno,
-  showModal,
-  setShowModal,
-      editarFactura
- } = useContext(FacturasContext);
+  const {
+    setSelectFacturaEdit,
+  } = useContext(FacturasContext);
 
+  const {
+    cancelarTurno,
+    showModal,
+    setShowModal,
+    editarFactura
+  } = useContext(FacturasContext);
+
+  const onPressEdit = () => {
+    console.log("Estas apunto de edit una factura")
+    setSelectFacturaEdit(item);
+  }
 
   return (
     <>
@@ -37,16 +45,11 @@ function TableCard( { item}) {
         <TableCell align="right">{item.tipo}</TableCell>
         <TableCell align="right">{item.categoria}</TableCell>
         <TableCell align="right"> 
-      <Link to={`/editar-factura/${item.id}`}>Editar Factura</Link>
+        <Link to={`/editar-factura/${item.id}`} onClick={onPressEdit}>Editar Factura</Link>
       </TableCell>   
 
            
         <TableCell align="right"> <Button onClick={() => cancelarTurno(item.id)}>Borrar</Button></TableCell>        
-   
-            
-        {/* {showModal ? 
-        <ModalEdit showModal={showModal} setShowModal={setShowModal} editarTurno={editarTurno} item={item}/>
-        : null} */}
 
 
     </TableRow> 

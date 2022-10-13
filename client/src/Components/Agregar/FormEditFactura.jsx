@@ -16,31 +16,26 @@ import {
   MenuItem,
 } from "@mui/material";
 
-function FormEditFactura( ) {
+function FormEditFactura() {
+  const {
+    selectFacturaEdit,
+  } = useContext(FacturasContext);
 
-     const {
+  const {
     listaFacturas,
     updateFactura
  } = useContext(FacturasContext);
 
   const id = useParams()
-
+  console.log(selectFacturaEdit)
   const [form, setForm] = useState ({
     concepto: null,
     tipo: null,
     monto: null,
     fecha: null,
     categoria: null,
-
 })
 
-
-  // const [tipo, setTipo] = useState("ingreso");
-  // const [categoria, setCategoria] = useState("");
-
-  // const [listado, setListado] = useState([]);
-
-  Axios.defaults.withCredentials = true;
 
   const selectCategoria = (e) => {
     setCategoria(e.target.value);
@@ -49,8 +44,6 @@ function FormEditFactura( ) {
   const selectTipo = (e) => {
     setTipo(e.target.value);
   };
-
-
 
   return (
     <Box component="form" noValidate sx={{ mt: 1 }}>
@@ -61,7 +54,7 @@ function FormEditFactura( ) {
         name="concepto"
         autoFocus
         type="text"
-        // value={form.concepto}
+        value={form.concepto}
         onChange={(e) => setForm({ ...form, [e.target.name] : e.target.value}) }
 
       />
@@ -71,7 +64,7 @@ function FormEditFactura( ) {
         name="monto"
         autoFocus
         type="number"
-        // value={form.monto}
+        value={form.monto}
         onChange={(e) => setForm({ ...form, [e.target.name] : e.target.value}) }
 
 
