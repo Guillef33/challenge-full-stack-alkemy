@@ -19,4 +19,9 @@ El front esta construido en React con Vite.
 Para las peticiones del front se uso Axios.
 Para los estilos, usamos Material UI para React
 
-# Tecnologia
+# Proximos pasos
+Registrar nuevo usuario
+Recuperar contrasena
+Mejorar el sistema de filtros y poder combinarlos
+Enviar por email las facturas
+Que el usuario pueda configurar limites y alertas para administrar sus gastos.
