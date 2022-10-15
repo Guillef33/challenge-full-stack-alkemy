@@ -9,7 +9,7 @@ function NavFacturas() {
       <h1>Facturas </h1>
       <Link to="/agregar-factura">Agregar Factura</Link>
       
-      <Link to="/logout">Logout</Link>
+      <Link to="/">Salir</Link>
 
     </ul>
   );

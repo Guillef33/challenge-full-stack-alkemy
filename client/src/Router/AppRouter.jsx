@@ -11,9 +11,7 @@ import Home from '../Pages/Home';
 import FacturasAppRouter from './FacturasAppRouter';
 import PrivateRoute from './PrivateRoutes';
 
-// Rutas Padres y Rutas Hijas
-
-const MainRouter = () => {
+const AppRouter = () => {
   return (
     <Router>
         <Routes>
@@ -30,4 +28,4 @@ const MainRouter = () => {
   )
 }
 
-export default MainRouter
+export default AppRouter
