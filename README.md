@@ -20,8 +20,8 @@ Para las peticiones del front se uso Axios.
 Para los estilos, usamos Material UI para React
 
 # Proximos pasos
-Registrar nuevo usuario
-Recuperar contrasena
-Mejorar el sistema de filtros y poder combinarlos
-Enviar por email las facturas
-Que el usuario pueda configurar limites y alertas para administrar sus gastos.
+Registrar nuevo usuario<br>
+Recuperar contrasena<br>
+Mejorar el sistema de filtros y poder combinarlos<br>
+Enviar por email las facturas<br>
+Que el usuario pueda configurar limites y alertas para administrar sus gastos.<br>
