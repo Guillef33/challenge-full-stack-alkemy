@@ -123,22 +123,6 @@ const FacturasProvider = (props) => {
     setShowDataFilterCategory(false);
   };
 
-  // function editFactura(id) {
-  //   console.log(id);
-  //   setShowModal(true);
-
-  //   Axios.put(`http://localhost:3050/update/${id}`, {
-  //     concepto: "Trabajos de carpinteria",
-  //     fecha: "29/02/22",
-  //     monto: "2000",
-  //     tipo: "egreso",
-  //     categoria: "hogar",
-  //     id: 1,
-  //   }).then((response) => {
-  //     console.log(response);
-  //   });
-  // }
-
   const updateFactura = (id, form) => {
     const concepto = form.concepto;
     const monto = form.monto;

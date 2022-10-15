@@ -2,8 +2,6 @@ import React,  { useContext } from 'react'
 
 import { Button, TableFooter, TableCell, TableRow } from '@mui/material'
 
-import ModalEdit from './ModalEdit'
-
 import Axios from 'axios'
 
 import Swal from 'sweetalert2';

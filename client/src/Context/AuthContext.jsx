@@ -4,21 +4,25 @@ import Axios from "axios";
 
 import Swal from "sweetalert2";
 
-import { useNavigate } from "react-router-dom";
 
 
 export const AuthContext = createContext(null);
 
 const AuthProvider = (props) => {
 
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState([])
+  const [loginStatus, setLoginStatus] = useState("");
+  const [login, setLogin] = useState(false)
 
-  let navigate = useNavigate();
+
+
+  const loginValidations = (email, password) => {
+
 
   const regexEmail =
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-  const loginValidations = (email, password) => {
+
       if (email === "" || password === "") {
       Swal.fire({
         title: 'Error!',
@@ -45,49 +49,22 @@ const AuthProvider = (props) => {
       icon: "success",
       confirmButtonText: "Ingresa"
     })
+    setLogin(true)
 
   }
 
-  const [loginStatus, setLoginStatus] = useState("");
-
-
-  const loginWeb = (e) => {
-    e.preventDefault();
-    const email = e.target.email.value;
-    const password = e.target.password.value;
-    console.log(email, password)
-    loginValidations(email, password)
-    setUser(email, password)
-    // console.log('Estoy aca')
-    Axios.post("http://localhost:3050/login", {
-      email: email,
-      password: password,
-    }).then((response) => {
-
-    console.log(response.data)
-
-    if (response.data.message) {
-      setLoginStatus(response.data.message)
-      Swal.fire({
-        title: 'Error!',
-        text: `${response.data.message}`,
-        icon: 'error',
-        confirmButtonText: 'Cool'
-      })
-    } else {
-      navigate("/dashboard")
-      // setLoginStatus(response.data.[0].email)
-    }
-  })
-  }
-
+ console.log(login)
 
   return (
     <AuthContext.Provider
       value={{
         loginValidations,
         user,
-        loginWeb
+        loginStatus,
+        login,
+        setUser,
+        setLogin,
+        setLoginStatus
       }}
     >
       {props.children}
