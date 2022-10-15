@@ -45,10 +45,10 @@
 
 .loginContainer button {
     border: none;
-    padding: 10px 5px;
+    padding: 1em 2em;
     cursor: pointer;
-    background-color: darkcyan;
-    border-radius: 5px;
+    background-color: tomato;
+    border-radius: 10px;
     margin: 10px 0px;
     width: 100%;
     color: white;

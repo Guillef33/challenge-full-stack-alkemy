@@ -18,9 +18,6 @@ import {
 import Axios from "axios";
 import RowMap from "./RowMap";
 
-import * as XLSX from "xlsx";
-
-import { read, writeFileXLSX } from "xlsx";
 
 import { FacturasContext } from "../../Context/FacturasContext";
 

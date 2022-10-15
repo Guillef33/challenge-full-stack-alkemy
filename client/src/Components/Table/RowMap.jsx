@@ -6,14 +6,19 @@ import TableCard from './TableCard'
 
 import { FacturasContext } from '../../Context/FacturasContext';
 
+import * as XLSX from "xlsx";
+
+import { read, writeFileXLSX } from "xlsx";
+
+
 
 function RowMap( {lista, ingresos, egresos, showModal, setShowModal} ) {
 
      // Export como XLS
     const handleExport = () => {
-      console.log(listaFacturas)
+      console.log(lista)
       let wb = XLSX.utils.book_new(),
-      ws = XLSX.utils.json_to_sheet(listaFacturas) ;
+      ws = XLSX.utils.json_to_sheet(lista) ;
 
       XLSX.utils.book_append_sheet(wb, ws, "ListaFacturas1");
 

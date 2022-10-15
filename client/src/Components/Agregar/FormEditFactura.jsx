@@ -109,7 +109,10 @@ function FormEditFactura() {
       </FormControl>
 
       <Button onClick={() => updateFactura(id.id, form)} fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
-        Edit Tarea
+        EditarTarea
+      </Button>
+      <Button variant="outlined" component={Link} to="/dashboard">
+       Volver a facturas
       </Button>
     </Box>
   );

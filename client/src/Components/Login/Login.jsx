@@ -7,6 +7,8 @@ import Swal from 'sweetalert2';
 import { AuthContext } from "../../Context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
+import {Box, TextField,  FormControl, Button} from '@mui/material'
+
 
 function Login() {
 
@@ -59,27 +61,29 @@ function Login() {
   Axios.defaults.withCredentials = true;
 
     return (
-    <div className="loginContainer">
-      <form onSubmit={(e) => loginWeb(e)}>
-        <label>Email</label>
-        <input
+    <Box className="loginContainer" component="form" onSubmit={(e) => loginWeb(e)}>
+      <FormControl fullWidth>
+        <TextField
           type="email"
           placeholder="Ingrese su nombre"
           name="email"
-        />
-        <label>Password</label>
+          label="Email"
 
-        <input
+          
+        />
+
+        <TextField
           type="password"
           placeholder="Ingrese su password"
           name="password"
+          label="Password"
         />
 
-        <button type="submit">
+        <Button type="submit">
           Enviar
-        </button>
-      </form>
-    </div>
+        </Button>
+      </FormControl>
+    </Box>
   );
 }
 
