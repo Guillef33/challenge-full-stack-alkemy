@@ -14,8 +14,6 @@ const AuthProvider = (props) => {
   const [loginStatus, setLoginStatus] = useState("");
   const [login, setLogin] = useState(false)
 
-
-
   const loginValidations = (email, password) => {
 
 

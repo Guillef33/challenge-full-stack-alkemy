@@ -8,6 +8,7 @@ export default function Form() {
   // States for registration
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
   const [newUser, setNewUser] = useState({});
   const [submitted, setSubmitted] = useState(false)
 
@@ -16,8 +17,9 @@ export default function Form() {
 
   const register = () => {
     Axios.post("http://localhost:3050/register", {
-      password: password,
-      email: email,
+        username: username,
+        email: email,
+        password: password,
     }).then((response) => {
       console.log(response);
     });
@@ -29,6 +31,16 @@ export default function Form() {
     <>
       <div className="loginContainer">
         <form>
+            <label>Username</label>
+
+          <input
+            type="text"
+            placeholder="Ingrese su usuario"
+            onChange={(e) => setUsername(e.target.value)}
+            value={username}
+          />
+
+
           <label>Email</label>
 
           <input
@@ -57,9 +69,7 @@ export default function Form() {
                 Login
               </Link>
             </>
-          ) : (
-            ""
-          )}
+          ) : null}
 
         </form>
       </div>

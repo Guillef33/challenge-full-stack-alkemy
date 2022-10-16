@@ -15,6 +15,8 @@ function ProfilePage() {
 
  const { login, user } = useContext(AuthContext)
 
+ console.log(user)
+
   return (
     <div>
         <Typography variant='h4'>Esta es la pagina de tu perfil, { user }</Typography>

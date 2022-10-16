@@ -218,33 +218,34 @@ app.post("/login", (req, res) => {
 
   connection.query(
     `SELECT * FROM usuarios WHERE email = "${email}" AND password = "${password}"`,
-      (error, result) => {
-        if (error) {
-          res.send({error: error})
-        } 
-        
-        if (result.length > 0) {
-          res.send(result)
-        } else {
+    (error, result) => {
+      if (error) {
+        res.send({ error: error });
+      }
+
+      if (result.length > 0) {
+        res.send(result);
+      } else {
         res.send({ message: "Wrong username/password combination" });
-        }
-        })
+      }
+    }
+  );
 });
 
 app.post("/register", (req, res) => {
-  res.send("We are here");
+  // res.send("We are here");
+  const username = req.body.username;
   const password = req.body.password;
   const email = req.body.email;
-    connection.query(
-      "INSERT INTO usuarios (email, password) VALUES (?,?)",
-      [email, password],
-      (err, result) => {
-        console.log(err);
-      }
-    );
-  });
-
-
+  connection.query(
+    "INSERT INTO usuarios (username, email, password) VALUES (?,?,?)",
+    [username, email, password],
+    (err, result) => {
+      console.log(err);
+      res.send(result);
+    }
+  );
+});
 
 // Check Connect
 connection.connect((error) => {

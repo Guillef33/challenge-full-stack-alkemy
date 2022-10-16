@@ -55,6 +55,8 @@ function Login() {
   })
   }
 
+  console.log(user)
+
   Axios.defaults.withCredentials = true;
 
     return (
@@ -64,9 +66,7 @@ function Login() {
           type="email"
           placeholder="Ingrese su nombre"
           name="email"
-          label="Email"
-
-          
+          label="Email"  
         />
 
         <TextField
