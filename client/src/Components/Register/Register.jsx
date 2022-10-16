@@ -4,6 +4,15 @@ import Axios from "axios";
 
 import { Link } from "react-router-dom";
 
+import {
+  Typography,
+  Button,
+  Box,
+  FormControl,
+  TextField
+} from "@mui/material";
+
+
 export default function Form() {
   // States for registration
   const [email, setEmail] = useState("");
@@ -29,39 +38,36 @@ export default function Form() {
 
   return (
     <>
-      <div className="loginContainer">
-        <form>
-            <label>Username</label>
+    <Box onSubmit={register} component="form" noValidate sx={{ mt: 1 }} className="loginContainer">
 
-          <input
+      <FormControl fullWidth>
+          <TextField
             type="text"
             placeholder="Ingrese su usuario"
             onChange={(e) => setUsername(e.target.value)}
             value={username}
+            name="usuario"
+            label="usuario"
           />
-
-
-          <label>Email</label>
-
-          <input
+          <TextField
             type="email"
             placeholder="Ingrese su email"
             onChange={(e) => setEmail(e.target.value)}
             value={email}
+            name="email"
+            label="email"
           />
-
-        <label>Password</label>
-          <input
+          <TextField
             type="password"
             placeholder="Ingrese su password"
             onChange={(e) => setPassword(e.target.value)}
             value={password}
+             name="password"
+            label="Password"
           />
-
-
-          <button onClick={register} type="button">
+          <Button onClick={register} type="button">
             Enviar
-          </button>
+          </Button>
 
           {submitted ? (
             <>
@@ -71,8 +77,8 @@ export default function Form() {
             </>
           ) : null}
 
-        </form>
-      </div>
+        </FormControl>
+      </Box>
     </>
   );
 }

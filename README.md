@@ -22,23 +22,25 @@ El front esta construido en React con Vite. <br>
 Para las peticiones del front se uso Axios.<br>
 Para los estilos, usamos Material UI para React<br>
 
-# Proximos pasos
-
 # Ultima actualizacion
+
 Registrar nuevo usuario ✅ <br>
 Perfil de usuarios ✅ <br>
 
-# Negocio y estadisticas
+# Proximos pasos
+
+# en negocio y estadisticas
+
 Mejorar el sistema de filtros y poder combinarlos<br>
 Estadisticas <br>
 Agenda de proveedores y clientes <br>
 Que el usuario pueda configurar limites y alertas para administrar sus gastos.<br>
 Crear organizacion con acceso a perfiles <br>
 
-# Usuario
+# en usuario y roles
+
 Recuperar contrasena<br>
 Enviar por email las facturas<br>
 Exportar en PDF <br>
 Registrarse con Google, Facebook <br>
 Alertas por email <br>
-

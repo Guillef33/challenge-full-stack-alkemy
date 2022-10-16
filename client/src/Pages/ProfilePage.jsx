@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import {
   Typography,
   Button,
+  Box,
 } from "@mui/material";
 
 
@@ -18,14 +19,14 @@ function ProfilePage() {
  console.log(user)
 
   return (
-    <div>
+    <Box>
         <Typography variant='h4'>Esta es la pagina de tu perfil, { user }</Typography>
-        <p>Aqui vas a poder completar tu perfil</p>
-        <p>Solo tenemos tu contrasena y nos gustaria poder mostrar algo mas</p>
+        <Typography variant='body1'>Aqui vas a poder completar tu perfil</Typography>
+        <Typography variant='body1'>Solo tenemos tu contrasena y nos gustaria poder mostrar algo mas</Typography>
         <Button variant="outlined" component={Link} to="/dashboard">
             Volver a facturas
       </Button>
-    </div>
+    </Box>
   )
 }
 
