@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 
 import Axios from "axios";
 
@@ -12,6 +12,9 @@ import {
   TextField
 } from "@mui/material";
 
+import { AuthContext } from "../../Context/AuthContext";
+
+
 
 export default function Form() {
   // States for registration
@@ -21,18 +24,24 @@ export default function Form() {
   const [newUser, setNewUser] = useState({});
   const [submitted, setSubmitted] = useState(false)
 
+  const {
+      loginValidations
+  } = useContext(AuthContext); 
+
 
   Axios.defaults.withCredentials = true;
 
   const register = () => {
+    loginValidations(email, password)
     Axios.post("http://localhost:3050/register", {
         username: username,
         email: email,
         password: password,
     }).then((response) => {
       console.log(response);
+        setSubmitted(true);
+
     });
-    setSubmitted(true);
   };
 
 
@@ -71,9 +80,11 @@ export default function Form() {
 
           {submitted ? (
             <>
-              <Link to={"/auth/login"} className="button-main">
+              <Button type="button"  sx={{backgroundColor: 'red'}}>
+                <Link to={"/auth/login"}>
                 Login
               </Link>
+              </Button>
             </>
           ) : null}
 

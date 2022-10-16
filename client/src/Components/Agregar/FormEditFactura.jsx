@@ -27,7 +27,7 @@ function FormEditFactura() {
  } = useContext(FacturasContext);
 
   const id = useParams()
-  // console.log(selectFacturaEdit)
+  // console.log(FacturaEdit)
   const [form, setForm] = useState ({
     concepto: null,
     tipo: null,

@@ -1,4 +1,4 @@
-import { Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 
@@ -6,7 +6,7 @@ import { AuthContext } from "../../Context/AuthContext";
 
 import './Nav.css'
 
-function NavFacturas() {
+function Header() {
 
   const { login, user } = useContext(AuthContext)
 
@@ -15,12 +15,13 @@ function NavFacturas() {
 
   return (
     <ul className="flex-container">
-      <Typography variant="h5">Bienvenido, {user} </Typography>
-      <Link to="/agregar-factura">Agregar Factura</Link>
-      <Link to="/mi-perfil">Mi Perfil</Link>
-      <Link to="/">Salir</Link>
+      <Typography>Contador App</Typography>
+      <Typography variant="book1">Bienvenido, {user} </Typography>
+      <Button><Link to="/agregar-factura">Agregar Factura</Link></Button>
+      <Button><Link to="/mi-perfil">Mi Perfil</Link></Button>
+      <Button><Link to="/">Salir</Link></Button>
     </ul>
   );
 }
 
-export default NavFacturas;
+export default Header;

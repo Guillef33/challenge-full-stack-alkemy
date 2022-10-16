@@ -22,7 +22,6 @@ function ProfilePage() {
     <Box>
         <Typography variant='h4'>Esta es la pagina de tu perfil, { user }</Typography>
         <Typography variant='body1'>Aqui vas a poder completar tu perfil</Typography>
-        <Typography variant='body1'>Solo tenemos tu contrasena y nos gustaria poder mostrar algo mas</Typography>
         <Button variant="outlined" component={Link} to="/dashboard">
             Volver a facturas
       </Button>
