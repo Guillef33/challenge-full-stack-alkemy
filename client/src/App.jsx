@@ -11,7 +11,7 @@ export default function App() {
       <FacturasProvider>
           <AppRouter />
       </FacturasProvider>
-      </AuthProvider>
+    </AuthProvider>
 
    
   )

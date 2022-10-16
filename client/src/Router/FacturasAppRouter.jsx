@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import ListaFacturas from "../Pages/ListaFacturas";
 import AgregarFactura from "../Components/Agregar/AgegarFactura";
-import LogoutPage from '../Pages/LogoutPage'
 import AuthProvider from '../Context/AuthContext'
 import LoginPage from "../Pages/LoginPage";
 

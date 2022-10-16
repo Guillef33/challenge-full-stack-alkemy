@@ -51,7 +51,6 @@ function AgregarFactura({}) {
       tipo: tipo,
       categoria: categoria,
     }).then((response) => {
-      console.log(response);  
       Swal.fire({
       title: 'Agregaste una nueva factura!',
       text: 'Excelente, ya puedes verla en la lista',

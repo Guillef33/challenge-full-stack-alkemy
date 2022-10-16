@@ -12,11 +12,11 @@ import { read, writeFileXLSX } from "xlsx";
 
 
 
-function RowMap( {lista, ingresos, egresos, showModal, setShowModal} ) {
+function RowMap( {lista} ) {
 
-     // Export como XLS
+  // Exportar como XLS
     const handleExport = () => {
-      console.log(lista)
+      // console.log(lista)
       let wb = XLSX.utils.book_new(),
       ws = XLSX.utils.json_to_sheet(lista) ;
 
@@ -39,8 +39,6 @@ function RowMap( {lista, ingresos, egresos, showModal, setShowModal} ) {
   useEffect(() => {     
     sumarMonto(lista)
   }, [lista])
-
-  // console.log(lista)
 
   return (
         <>

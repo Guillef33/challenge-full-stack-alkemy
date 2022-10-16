@@ -29,8 +29,6 @@ function SelectorDeCategorias() {
     <Box sx={{ minWidth: 120 }}>
       <FormControl fullWidth>
         <Select
-          // labelId="demo-simple-select-label"
-          // id="demo-simple-select"
           value={seleccion}
           label="Seleccion"
           onChange={handleChange}

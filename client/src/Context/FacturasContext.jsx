@@ -14,8 +14,7 @@ const FacturasProvider = (props) => {
   
   const [showIngresos, setShowIngresos] = useState(false);
   const [showEgresos, setShowEgresos] = useState(false);
-  const [showModal, setShoworydal] = useState(false);
-  const [showComida, setShowComida] = useState(false);
+
   /* Flags para mostrar una cosa u otra filtrada por categoria */
   const [filterCategory, setFilterCategory] = useState('');
   const [dataFilterCategory, setDataFilterCategory] = useState([]);
@@ -28,7 +27,6 @@ const FacturasProvider = (props) => {
   ]);
   const [categoria, setCategoria] = useState("");
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState([])
-  const [comidas, setComidas] = useState([]);
 
   const [showCategoria, setShowCategoria] = useState(false)
 
@@ -37,7 +35,6 @@ const FacturasProvider = (props) => {
 
   function cancelarTurno(id) {
     Axios.delete(`http://localhost:3050/delete/${id}`, {}).then((response) => {
-      console.log(response);
       Swal.fire({
         title: "Factura eliminada",
         text: "Excelente, ya no la veras en la lista",
@@ -57,9 +54,7 @@ const FacturasProvider = (props) => {
 
   const filterIngresos = () => {
  
-    let listado = listaFacturas.filter((ingreso) => ingreso.tipo === "ingreso");
-    console.log(listado, "ingresos");
-    
+    let listado = listaFacturas.filter((ingreso) => ingreso.tipo === "ingreso");    
     setShowIngresos(!showIngresos);
     setShowEgresos(false);
     setShowDataFilterCategory(false);
@@ -69,7 +64,6 @@ const FacturasProvider = (props) => {
 
   const filterEgresos = () => {
     let listado = listaFacturas.filter((egreso) => egreso.tipo === "egreso");
-    console.log(listado, "egreso");
 
     setShowEgresos(!showEgresos);
     setShowIngresos(false);
@@ -78,12 +72,11 @@ const FacturasProvider = (props) => {
 
     return listado;
   };
+
   // Categorias
 
   const filterWithCategory = (category) => {
     let listado = listaFacturas.filter((data) => data.categoria === category);
-
-    console.log(listado, "Datos filtrado por category");
 
     setShowEgresos(false);
     setShowIngresos(false);
@@ -130,8 +123,6 @@ const FacturasProvider = (props) => {
     const fecha = form.fecha;
     const categoria = form.categoria;
 
-    console.log(concepto, monto, tipo, fecha, categoria);
-
     Axios.put(`http://localhost:3050/update/${id}`, {
       concepto: concepto,
       fecha: fecha,
@@ -168,8 +159,6 @@ const FacturasProvider = (props) => {
         updateFactura,
         showIngresos,
         showEgresos,
-        comidas,
-        setComidas,
         categoria,
         categorias,
         selectCategoria,

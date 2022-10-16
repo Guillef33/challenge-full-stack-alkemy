@@ -15,13 +15,6 @@
   -webkit-text-size-adjust: 100%;
 }
 
-.flex-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 1200px;
-  margin: auto;
-}
 
 @media (prefers-color-scheme: light) {
   :root {

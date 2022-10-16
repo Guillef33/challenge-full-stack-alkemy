@@ -24,9 +24,11 @@ import { read, writeFileXLSX } from "xlsx";
 
 import { FacturasContext } from "../../Context/FacturasContext";
 
-import SelectorDeCategorias from "./SelectorDeCategorias";
-
 import Swal from "sweetalert2";
+
+import './FilterTable.css'
+import FilterButtons from "./FilterButtons";
+
 function TableContainerMaster() {
   const {
     filterEgresos,
@@ -34,51 +36,22 @@ function TableContainerMaster() {
     showAll,
     showIngresos,
     showEgresos,
+    showDataFilterCategory,
     listaFacturas,
-    editFactura,
     ingresos,
     egresos,
-    showModal,
-    setShowModal,
-    showComida,
-    filterComidas,
-    comidas,
-    setComidas,
-    categorias,
-    categoria,
-    setCategorias,
-    setCategoria,
-    selectCategoria,
-    categoriaSeleccionada,
-    setCategoriaSeleccionada,
     dataFilterCategory,
-    filterCategory,
-    showDataFilterCategory,
-    filterWithCategory,
+
   } = useContext(FacturasContext);
 
 
-
-  console.log(comidas)
 
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
-          <TableRow>
-            <TableCell align="right">
-              <Button onClick={filterIngresos}>Ver solo ingresos</Button>
-            </TableCell>
-            <TableCell align="right">
-              <Button onClick={filterEgresos}>Ver solo egresos</Button>
-            </TableCell>
-            <TableCell align="right">
-              <Button onClick={showAll}>Ver todo</Button>
-            </TableCell>
 
-            <SelectorDeCategorias />
-
-          </TableRow>
+          <FilterButtons showAll={showAll} filterIngresos={filterIngresos} filterEgresos={filterEgresos} />
 
           <TableRow>
             <TableCell>Concepto</TableCell>

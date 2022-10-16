@@ -19,14 +19,11 @@ function TableCard( { item}) {
 
   const {
     cancelarTurno,
-    showModal,
-    setShowModal,
     editarFactura
   } = useContext(FacturasContext);
 
   const onPressEdit = () => {
-    console.log("Estas apunto de edit una factura")
-    setSelectFacturaEdit(item);
+      setSelectFacturaEdit(item);
   }
 
   return (

@@ -55,9 +55,6 @@ function Login() {
   })
   }
 
-  console.log(login)
-
-
   Axios.defaults.withCredentials = true;
 
     return (

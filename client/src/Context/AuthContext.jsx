@@ -28,7 +28,7 @@ const AuthProvider = (props) => {
         title: 'Error!',
         text: 'Los campos no pueden estar vacios',
         icon: 'error',
-        confirmButtonText: 'Cool'
+        confirmButtonText: 'Continuar'
       })
       return;
     }
@@ -38,7 +38,7 @@ const AuthProvider = (props) => {
         title: 'Error!',
         text: 'Debes escribir una direccion de correo electronico valida',
         icon: 'error',
-        confirmButtonText: 'Cool'
+        confirmButtonText: 'Continuar'
       })
       return;
     }
@@ -47,7 +47,7 @@ const AuthProvider = (props) => {
       title: "Todo bien",
       text: "Bienvenido a Facturas App",
       icon: "success",
-      confirmButtonText: "Ingresa"
+      confirmButtonText: "Continuar"
     })
     setLogin(true)
 
