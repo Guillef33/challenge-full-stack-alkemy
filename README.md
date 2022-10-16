@@ -24,15 +24,21 @@ Para los estilos, usamos Material UI para React<br>
 
 # Proximos pasos
 
-Registrar nuevo usuario<br> Hecho ✅
-Perfil de usuarios <br> Hecho ✅
-Recuperar contrasena<br>
+# Ultima actualizacion
+Registrar nuevo usuario ✅ <br>
+Perfil de usuarios ✅ <br>
+
+# Negocio y estadisticas
 Mejorar el sistema de filtros y poder combinarlos<br>
-Enviar por email las facturas<br>
-Que el usuario pueda configurar limites y alertas para administrar sus gastos.<br>
-Exportar en PDF <br>
-Crear organizacion con acceso a perfiles <br>
-Registrarse con Google, Facebook <br>
-Agenda de proveedores y clientes <br>
-Alertas por email <br>
 Estadisticas <br>
+Agenda de proveedores y clientes <br>
+Que el usuario pueda configurar limites y alertas para administrar sus gastos.<br>
+Crear organizacion con acceso a perfiles <br>
+
+# Usuario
+Recuperar contrasena<br>
+Enviar por email las facturas<br>
+Exportar en PDF <br>
+Registrarse con Google, Facebook <br>
+Alertas por email <br>
+
