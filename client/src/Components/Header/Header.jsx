@@ -1,3 +1,4 @@
+import { Typography } from "@mui/material";
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 
@@ -14,11 +15,10 @@ function NavFacturas() {
 
   return (
     <ul className="flex-container">
-      <h1>Bienvenido, {user} </h1>
+      <Typography variant="h5">Bienvenido, {user} </Typography>
       <Link to="/agregar-factura">Agregar Factura</Link>
-      
+      <Link to="/mi-perfil">Mi Perfil</Link>
       <Link to="/">Salir</Link>
-
     </ul>
   );
 }

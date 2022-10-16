@@ -52,7 +52,6 @@ function RowMap( {lista} ) {
         <TableCell align="right"> <Button onClick={handleExport}>Exportar a XLS</Button></TableCell>  
       </TableRow>
 
-    
     </>
   )
 }

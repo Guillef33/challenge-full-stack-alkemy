@@ -9,7 +9,6 @@ function ListaFacturas() {
   return (
     <>
       <Header />
-      {/* <FilterTable /> */}
       <TableContainerMaster />
     </>
   );

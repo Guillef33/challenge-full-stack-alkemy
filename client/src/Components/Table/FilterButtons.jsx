@@ -9,12 +9,13 @@ import {
 function FilterButtons( {filterEgresos, filterIngresos, showAll}) {
 
   return (
-    <div className="filterButtons">
+    <ul className="flex-container">
         <Button onClick={filterIngresos}>Ver solo ingresos</Button>
         <Button onClick={filterEgresos}>Ver solo egresos</Button>
         <Button onClick={showAll}>Ver todo</Button>
         <SelectorDeCategorias />
-    </div>  )
+    </ul>  
+    )
 }
 
 export default FilterButtons

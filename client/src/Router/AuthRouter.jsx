@@ -9,11 +9,14 @@ import {
 
 import Login from "../components/login/Login";
 import LoginPage from '../Pages/LoginPage';
+import Register from '../Components/Register/Register'
 
 const AuthRouter = () => {
   return (
     <Routes>
         <Route path="login" element={<LoginPage />}></Route>
+        <Route path="register" element={<Register />}></Route>
+
 
         <Route path='*' element={<LoginPage to="login" />}/>
 

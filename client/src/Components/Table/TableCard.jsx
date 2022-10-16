@@ -42,10 +42,8 @@ function TableCard( { item}) {
         <TableCell align="right"> 
         <Link to={`/editar-factura/${item.id}`} onClick={onPressEdit}>Editar Factura</Link>
       </TableCell>   
-
            
         <TableCell align="right"> <Button onClick={() => cancelarTurno(item.id)}>Borrar</Button></TableCell>        
-
 
     </TableRow> 
 

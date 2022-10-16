@@ -231,6 +231,20 @@ app.post("/login", (req, res) => {
         })
 });
 
+app.post("/register", (req, res) => {
+  res.send("We are here");
+  const password = req.body.password;
+  const email = req.body.email;
+    connection.query(
+      "INSERT INTO usuarios (email, password) VALUES (?,?)",
+      [email, password],
+      (err, result) => {
+        console.log(err);
+      }
+    );
+  });
+
+
 
 // Check Connect
 connection.connect((error) => {

@@ -9,6 +9,7 @@ import LoginPage from "../Pages/LoginPage";
 
 import Home from '../Pages/Home'
 import FormEditFactura from "../Components/Agregar/FormEditFactura";
+import ProfilePage from "../Pages/ProfilePage";
 
 function FacturasAppRouter() {
   return (
@@ -16,6 +17,8 @@ function FacturasAppRouter() {
         <Route exact path="/dashboard" element={<ListaFacturas />}></Route>
         <Route path="/agregar-factura" element={<AgregarFactura />}></Route>
         <Route path="/editar-factura/:id" element={<FormEditFactura />}></Route>
+        <Route path="/mi-perfil" element={<ProfilePage />}></Route>
+
       </Routes>
   );
 }

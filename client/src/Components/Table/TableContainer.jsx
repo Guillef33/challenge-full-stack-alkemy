@@ -47,12 +47,11 @@ function TableContainerMaster() {
 
 
   return (
+    <>
+    <FilterButtons showAll={showAll} filterIngresos={filterIngresos} filterEgresos={filterEgresos} />
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
-
-          <FilterButtons showAll={showAll} filterIngresos={filterIngresos} filterEgresos={filterEgresos} />
-
           <TableRow>
             <TableCell>Concepto</TableCell>
             <TableCell align="right">Monto</TableCell>
@@ -79,6 +78,8 @@ function TableContainerMaster() {
         </TableBody>
       </Table>
     </TableContainer>
+    </>
+
   );
 }
 
