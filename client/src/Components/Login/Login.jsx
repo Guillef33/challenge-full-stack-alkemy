@@ -29,13 +29,15 @@ function Login() {
     const password = e.target.password.value;
     console.log(email, password)
     loginValidations(email, password)
-    setUser(email, password)
+ 
+    console.log(user)
     Axios.post("http://localhost:3050/login", {
       email: email,
       password: password,
     }).then((response) => {
 
     console.log(response.data)
+       setUser(response.data[1])
 
     if (response.data.message) {
       setLoginStatus(response.data.message)

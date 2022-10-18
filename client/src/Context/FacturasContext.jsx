@@ -37,6 +37,12 @@ const FacturasProvider = (props) => {
   /* Factura seleccionada */
   const [selectFacturaEdit, setSelectFacturaEdit ] = useState([]);
 
+  const [ingresosMonto, setIngresosMonto] = useState()
+  const [egresosMonto, setEgresosMonto] = useState()
+  const [totalMonto, setTotalMonto] = useState()
+
+ 
+
   function cancelarTurno(id) {
     Axios.delete(`http://localhost:3050/delete/${id}`, {}).then((response) => {
       Swal.fire({
@@ -171,6 +177,15 @@ const FacturasProvider = (props) => {
     setTotal(sumWithInitial)
   }
 
+  
+  // function ingresosTotales () {
+  //   setIngresosMonto(sumarMonto(ingresos))
+
+  // }
+
+  // useEffect(() => {
+  //   ingresosTotales()
+  // }, [])
 
   return (
     <FacturasContext.Provider
@@ -206,7 +221,8 @@ const FacturasProvider = (props) => {
         handleExport,
         sumarMonto,
         total,
-        setTotal
+        setTotal,
+        ingresosMonto
       }}
     >
       {props.children}

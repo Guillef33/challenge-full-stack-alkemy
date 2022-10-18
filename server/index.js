@@ -248,17 +248,17 @@ app.post("/register", (req, res) => {
 });
 
 app.put("/update-users/:id", (req, res) => {
-  const concepto = req.body.concepto;
-  const monto = req.body.monto;
-  const fecha = req.body.fecha;
-  const tipo = req.body.tipo;
-  const categoria = req.body.categoria;
+  const nombreCompleto = req.body.nombreCompleto;
+  const empresa = req.body.empresa;
+  const cargo = req.body.cargo;
+  const edad = req.body.edad;
+  const genero = req.body.genero;
   const id = req.params.id;
 
   console.log(id, concepto, monto, fecha, tipo, categoria);
 
   connection.query(
-    `UPDATE facturas SET concepto = "${concepto}", monto = ${monto}, fecha = "${fecha}", tipo = "${tipo}", categoria = "${categoria}"  WHERE id = ${id}`,
+    `UPDATE facturas SET nombreCompleto = "${nombreCompleto}", empresa = ${empresa}, cargo = "${cargo}", edad = "${edad}", genero = "${genero}"  WHERE id = ${id}`,
     (error, result) => {
       if (error) {
         console.log(error);
@@ -269,7 +269,6 @@ app.put("/update-users/:id", (req, res) => {
     }
   );
 });
-
 
 // Check Connect
 connection.connect((error) => {

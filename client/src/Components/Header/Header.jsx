@@ -10,13 +10,10 @@ function Header() {
 
   const { login, user } = useContext(AuthContext)
 
-  console.log(user)
-
-
   return (
     <ul className="flex-container">
       <Typography>Contador App</Typography>
-      <Typography variant="book1">Bienvenido, {user} </Typography>
+      <Typography variant="book1">Bienvenido, {user.username} </Typography>
       <Button><Link to="/agregar-factura">Agregar Factura</Link></Button>
       <Button><Link to="/mi-perfil">Mi Perfil</Link></Button>
       <Button><Link to="/">Salir</Link></Button>

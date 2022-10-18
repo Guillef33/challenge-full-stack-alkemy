@@ -31,7 +31,7 @@ function SelectorDeCategorias() {
           <InputLabel id="label-select">Categorias</InputLabel>
         <Select
           value={seleccion}
-          label="Seleccion"
+          // label="Seleccion"
           onChange={handleChange}
           label="seleccion"
           id="label-select"

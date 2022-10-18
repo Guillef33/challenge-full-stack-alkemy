@@ -12,25 +12,32 @@ import {
   Button,
   Box,
 } from "@mui/material";
+import Header from '../Components/Header/Header';
+
+import '../Components/Dashboard/Dashboard.css'
 
 function ProfilePage() {
 
  const { login, user } = useContext(AuthContext)
 
- const { id } = useParams()
+ const { id } = useParams;
 
  console.log(user)
 
   return (
-    <Box>
-        <Typography variant='h4'>Esta es la pagina de tu perfil, { user }</Typography>
-        <Typography variant='body1'>Aqui vas a poder completar tu perfil</Typography>
-        <Link to={`/editar-usuario/${id}`} >Editar Perfil</Link>
+    <>
+    <Header />
+    <Box className='profile-container'>
+        <Typography variant='book1'>Esta es la pagina de tu perfil, { user.username  }</Typography>
         <Dashboard />
         <Button variant="outlined" component={Link} to="/dashboard">
-            Volver a facturas
-      </Button>
+          Volver a facturas
+        </Button>
+        <Button variant="outlined" component={Link} to={`/editar-usuario/${id}`}>
+          Editar Perfil
+        </Button>
     </Box>
+    </>
   )
 }
 

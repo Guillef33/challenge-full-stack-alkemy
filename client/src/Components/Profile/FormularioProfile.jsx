@@ -46,9 +46,11 @@ function FormularioProfile() {
     categoria: null,
 })
 
+
+// Setear todos los valores del formulario y 
   
   const updateUser = (id, form) => {
-   const nombreCompleto = e.target.concepto.value;
+    const nombreCompleto = e.target.concepto.value;
     const cargo = e.target.cargo.value;
     const empresa = e.target.empresa.value;
     const edad = e.target.edad.value;
@@ -120,7 +122,7 @@ function FormularioProfile() {
         </Select>
       </FormControl>
 
-      <Button onClick={() => updateUser(id.id, form)} type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
+      <Button onClick={() => updateUser(id.id, form)} fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
         Publicar
       </Button>
       <Button variant="outlined" component={Link} to="/dashboard">
