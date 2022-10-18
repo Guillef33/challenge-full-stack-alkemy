@@ -18,7 +18,6 @@ const AuthRouter = () => {
         <Route path="login" element={<LoginPage />}></Route>
         <Route path="register" element={<RegisterPage />}></Route>
 
-
         <Route path='*' element={<LoginPage to="login" />}/>
 
     </Routes>

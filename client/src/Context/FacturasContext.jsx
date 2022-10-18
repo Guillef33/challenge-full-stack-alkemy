@@ -4,6 +4,10 @@ import Axios from "axios";
 
 import Swal from "sweetalert2";
 
+import * as XLSX from "xlsx";
+
+import { read, writeFileXLSX } from "xlsx";
+
 export const FacturasContext = createContext(null);
 
 const FacturasProvider = (props) => {
@@ -143,6 +147,30 @@ const FacturasProvider = (props) => {
     // setSubmitted(true);
   };
 
+  
+  // Exportar como XLS
+    const handleExport = () => {
+      // console.log(lista)
+      let wb = XLSX.utils.book_new(),
+      ws = XLSX.utils.json_to_sheet(lista) ;
+
+      XLSX.utils.book_append_sheet(wb, ws, "ListaFacturas1");
+
+      XLSX.writeFile(wb, 'ListaFacturas.xlsx');
+    }
+    
+  let [total, setTotal] = useState(0)
+
+  const sumarMonto = ( lista ) => {
+    const monto = lista.map(factura => factura.monto)
+    
+  const sumWithInitial = monto.reduce(
+  (previousValue, currentValue) => previousValue + currentValue,
+    0);
+    setTotal(sumWithInitial)
+  }
+
+
   return (
     <FacturasContext.Provider
       value={{
@@ -174,6 +202,10 @@ const FacturasProvider = (props) => {
         showDataFilterCategory,
         setSelectFacturaEdit,
         selectFacturaEdit,
+        handleExport,
+        sumarMonto,
+        total,
+        setTotal
       }}
     >
       {props.children}

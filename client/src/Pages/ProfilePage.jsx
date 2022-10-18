@@ -4,6 +4,9 @@ import { AuthContext } from '../Context/AuthContext'
 
 import { Link } from "react-router-dom";
 
+import Dashboard from '../Components/Dashboard/Dashboard';
+import FormularioProfile from '../Components/Profile/FormularioProfile';
+
 
 import {
   Typography,
@@ -22,6 +25,8 @@ function ProfilePage() {
     <Box>
         <Typography variant='h4'>Esta es la pagina de tu perfil, { user }</Typography>
         <Typography variant='body1'>Aqui vas a poder completar tu perfil</Typography>
+        <FormularioProfile />
+        <Dashboard />
         <Button variant="outlined" component={Link} to="/dashboard">
             Volver a facturas
       </Button>
