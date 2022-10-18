@@ -1,9 +1,13 @@
-import React, { useState } from 'react'
-import { Link } from "react-router-dom";
+import React, { useState, useContext } from 'react'
 
 import Axios from "axios";
 
 import Swal from 'sweetalert2';
+
+import { Link, useParams } from "react-router-dom";
+
+import { AuthContext } from '../../Context/AuthContext';
+
 
 import {
   Box,
@@ -18,43 +22,60 @@ import {
 
 function FormularioProfile() {
 
-    Axios.defaults.withCredentials = true;
+  Axios.defaults.withCredentials = true;
+  const {setUserEdit} = useContext(AuthContext)
+  
   const [genero, setGenero] = useState("masculino");
 
-    const selectTipo = (e) => {
+  const selectTipo = (e) => {
     setGenero(e.target.value);
   };
 
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const nombreCompleto = e.target.concepto.value;
+    const onPressEdit = () => {
+      setUserEdit(item);
+  }
+
+    const id = useParams()
+
+   const [form, setForm] = useState ({
+    concepto: null,
+    tipo: null,
+    monto: null,
+    fecha: null,
+    categoria: null,
+})
+
+  
+  const updateUser = (id, form) => {
+   const nombreCompleto = e.target.concepto.value;
     const cargo = e.target.cargo.value;
     const empresa = e.target.empresa.value;
     const edad = e.target.edad.value;
     const genero = e.target.genero.value;
 
-    // Revisar este endoint
-    Axios.post("http://localhost:3050/usuario-completos", {
+    Axios.put(`http://localhost:3050/update-users/${id}`, {
       nombreCompleto: nombreCompleto,  
       cargo: cargo,
       empresa: empresa,
       edad: edad,
       genero: genero,
+      id: id,
     }).then((response) => {
+      console.log(response);
       Swal.fire({
-      title: 'Completaste tus datos!',
-      text: 'Excelente, ya puedes verla en la lista',
-      icon: 'success',
-      confirmButtonText: 'Seguir'
-    })
+        title: "Editaste tu perfil",
+        text: "Excelente, ya puedes verlo actualizadda en la lista",
+        icon: "success",
+        confirmButtonText: "Seguir",
+      });
     });
-
   };
 
 
+
   return (
-    <Box onSubmit={handleSubmit} component="form" noValidate sx={{ mt: 1 }}>
+    <Box component="form" noValidate sx={{ mt: 1 }}>
       <FormControl fullWidth>
         <TextField
         margin="normal"
@@ -99,7 +120,7 @@ function FormularioProfile() {
         </Select>
       </FormControl>
 
-      <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
+      <Button onClick={() => updateUser(id.id, form)} type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
         Publicar
       </Button>
       <Button variant="outlined" component={Link} to="/dashboard">

@@ -120,6 +120,7 @@ const FacturasProvider = (props) => {
     setShowDataFilterCategory(false);
   };
 
+   
   const updateFactura = (id, form) => {
     const concepto = form.concepto;
     const monto = form.monto;
@@ -149,15 +150,15 @@ const FacturasProvider = (props) => {
 
   
   // Exportar como XLS
-    const handleExport = () => {
-      // console.log(lista)
-      let wb = XLSX.utils.book_new(),
-      ws = XLSX.utils.json_to_sheet(lista) ;
+  const handleExport = () => {
+    // console.log(lista)
+    let wb = XLSX.utils.book_new(),
+    ws = XLSX.utils.json_to_sheet(lista) ;
 
-      XLSX.utils.book_append_sheet(wb, ws, "ListaFacturas1");
+    XLSX.utils.book_append_sheet(wb, ws, "ListaFacturas1");
 
-      XLSX.writeFile(wb, 'ListaFacturas.xlsx');
-    }
+    XLSX.writeFile(wb, 'ListaFacturas.xlsx');
+  }
     
   let [total, setTotal] = useState(0)
 

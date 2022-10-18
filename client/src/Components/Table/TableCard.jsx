@@ -15,10 +15,7 @@ function TableCard( { item}) {
 
   const {
     setSelectFacturaEdit,
-  } = useContext(FacturasContext);
-
-  const {
-    cancelarTurno,
+      cancelarTurno,
     editarFactura
   } = useContext(FacturasContext);
 
