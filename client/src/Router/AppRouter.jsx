@@ -11,8 +11,6 @@ import Home from '../Pages/Home';
 import FacturasAppRouter from './FacturasAppRouter';
 import PrivateRoute from './PrivateRoutes';
 
-import Suscripcion from '../Pages/Suscripcion';
-
 const AppRouter = () => {
   return (
     <Router>
@@ -20,8 +18,6 @@ const AppRouter = () => {
             <Route exact path='auth/*' element={ <AuthRouter /> } />
             <Route path='/' element={<Home /> }
             />
-                    <Route path="/planes" element={<Suscripcion />}></Route>
-
             <Route path='/*' element={ 
                 <PrivateRoute>
                     <FacturasAppRouter />
