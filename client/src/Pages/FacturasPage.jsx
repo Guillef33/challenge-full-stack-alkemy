@@ -3,7 +3,7 @@ import React from "react";
 import Header from "../Components/Header/Header";
 import TableContainerMaster from "../Components/Table/TableContainer";
 
-function ListaFacturas() {
+function FacturasPage() {
   return (
     <>
       <Header />
@@ -12,4 +12,4 @@ function ListaFacturas() {
   );
 }
 
-export default ListaFacturas;
+export default FacturasPage;

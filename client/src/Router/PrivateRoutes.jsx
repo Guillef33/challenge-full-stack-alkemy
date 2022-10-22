@@ -1,19 +1,21 @@
-import React, { useContext } from 'react'
-import Login from '../components/login/Login';
-import LoginPage from '../Pages/LoginPage'
+import React, { useContext, useEffect } from "react";
+import Login from "../components/login/Login";
+import LoginPage from "../Pages/LoginPage";
 
 // Protege las rutas a traves de un AuthContext
-import { AuthContext } from '../Context/AuthContext';
+import { AuthContext } from "../Context/AuthContext";
 
-import Home from '../pages/Home'
+import Home from "../pages/Home";
 
+const PrivateRoute = (props) => {
+  const { login } = useContext(AuthContext);
+  console.log(login);
 
-const PrivateRoute = ( props ) => {
+  useEffect(() => {
+      localStorage.getItem("loginState", login);
+    }, []);
 
- const {login} = useContext(AuthContext);
-//  console.log(login)
+  return login ? props.children : <LoginPage />;
+};
 
-  return login ? props.children : <LoginPage />
-}
-
-export default PrivateRoute
+export default PrivateRoute;

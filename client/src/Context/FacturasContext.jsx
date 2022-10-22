@@ -14,15 +14,15 @@ const FacturasProvider = (props) => {
   const [ingresos, setIngresos] = useState([]);
   const [egresos, setEgresos] = useState([]);
   const [listaFacturas, setListaFacturas] = useState([]);
-  const [comida, setComida] = useState([])
-  
+  const [comida, setComida] = useState([]);
+
   const [showIngresos, setShowIngresos] = useState(false);
   const [showEgresos, setShowEgresos] = useState(false);
 
   /* Flags para mostrar una cosa u otra filtrada por categoria */
-  const [filterCategory, setFilterCategory] = useState('');
+  const [filterCategory, setFilterCategory] = useState("");
   const [dataFilterCategory, setDataFilterCategory] = useState([]);
-  const [showDataFilterCategory, setShowDataFilterCategory] = useState(false)
+  const [showDataFilterCategory, setShowDataFilterCategory] = useState(false);
 
   const [categorias, setCategorias] = useState([
     "entretenimiento",
@@ -30,18 +30,16 @@ const FacturasProvider = (props) => {
     "comida",
   ]);
   const [categoria, setCategoria] = useState("");
-  const [categoriaSeleccionada, setCategoriaSeleccionada] = useState([])
+  const [categoriaSeleccionada, setCategoriaSeleccionada] = useState([]);
 
-  const [showCategoria, setShowCategoria] = useState(false)
+  const [showCategoria, setShowCategoria] = useState(false);
 
   /* Factura seleccionada */
-  const [selectFacturaEdit, setSelectFacturaEdit ] = useState([]);
+  const [selectFacturaEdit, setSelectFacturaEdit] = useState([]);
 
-  const [ingresosMonto, setIngresosMonto] = useState()
-  const [egresosMonto, setEgresosMonto] = useState()
-  const [totalMonto, setTotalMonto] = useState()
-
- 
+  const [ingresosMonto, setIngresosMonto] = useState();
+  const [egresosMonto, setEgresosMonto] = useState();
+  const [totalMonto, setTotalMonto] = useState();
 
   function cancelarTurno(id) {
     Axios.delete(`http://localhost:3050/delete/${id}`, {}).then((response) => {
@@ -62,13 +60,27 @@ const FacturasProvider = (props) => {
     });
   };
 
+  const getIngresos = (e) => {
+    Axios.get("http://localhost:3050/facturas").then((response) => {
+      const ingresos = response.data.filter(
+        (ingreso) => ingreso.tipo === "ingreso"
+      );
+      const egresos = response.data.filter(
+        (egresos) => egresos.tipo === "egreso"
+      );
+      setEgresos(egresos);
+      setIngresos(ingresos);
+      localStorage.setItem("ingresos", JSON.stringify(ingresos));
+      localStorage.setItem("egresos", JSON.stringify(egresos));
+    });
+  };
+
   const filterIngresos = () => {
- 
-    let listado = listaFacturas.filter((ingreso) => ingreso.tipo === "ingreso");    
+    let listado = listaFacturas.filter((ingreso) => ingreso.tipo === "ingreso");
     setShowIngresos(!showIngresos);
     setShowEgresos(false);
     setShowDataFilterCategory(false);
-    setIngresos(listado)
+    setIngresos(listado);
     return listado;
   };
 
@@ -78,7 +90,7 @@ const FacturasProvider = (props) => {
     setShowEgresos(!showEgresos);
     setShowIngresos(false);
     setShowDataFilterCategory(false);
-    setEgresos(listado)
+    setEgresos(listado);
 
     return listado;
   };
@@ -91,8 +103,8 @@ const FacturasProvider = (props) => {
     setShowEgresos(false);
     setShowIngresos(false);
     setShowDataFilterCategory(true);
-    setDataFilterCategory(listado)
-    return
+    setDataFilterCategory(listado);
+    return;
   };
 
   const selectCategoria = (valorDeCategoria) => {
@@ -106,7 +118,7 @@ const FacturasProvider = (props) => {
     let listado = listaFacturas.filter(
       (categoria) => categoria.tipo === categoriaSeleccionada
     );
-    setCategoriaSeleccionada(listado)
+    setCategoriaSeleccionada(listado);
   };
 
   const getComidas = (e) => {
@@ -115,18 +127,12 @@ const FacturasProvider = (props) => {
     });
   };
 
-  // Analizar que dependencia puede generar el cambio
-  useEffect(() => {
-    getFacturas();
-  }, []);
-
   const showAll = () => {
     setShowEgresos(false);
     setShowIngresos(false);
     setShowDataFilterCategory(false);
   };
 
-   
   const updateFactura = (id, form) => {
     const concepto = form.concepto;
     const monto = form.monto;
@@ -142,7 +148,6 @@ const FacturasProvider = (props) => {
       categoria: categoria,
       id: id,
     }).then((response) => {
-      console.log(response);
       Swal.fire({
         title: "Editaste tu factura",
         text: "Excelente, ya puedes verla actualizadda en la lista",
@@ -150,42 +155,36 @@ const FacturasProvider = (props) => {
         confirmButtonText: "Seguir",
       });
     });
-    // listado.push(factura)
-    // setSubmitted(true);
   };
 
-  
   // Exportar como XLS
   const handleExport = () => {
-    // console.log(lista)
     let wb = XLSX.utils.book_new(),
-    ws = XLSX.utils.json_to_sheet(lista) ;
+      ws = XLSX.utils.json_to_sheet(lista);
 
     XLSX.utils.book_append_sheet(wb, ws, "ListaFacturas1");
 
-    XLSX.writeFile(wb, 'ListaFacturas.xlsx');
-  }
-    
-  let [total, setTotal] = useState(0)
+    XLSX.writeFile(wb, "ListaFacturas.xlsx");
+  };
 
-  const sumarMonto = ( lista ) => {
-    const monto = lista.map(factura => factura.monto)
-    
-  const sumWithInitial = monto.reduce(
-  (previousValue, currentValue) => previousValue + currentValue,
-    0);
-    setTotal(sumWithInitial)
-  }
+  let [total, setTotal] = useState(0);
 
-  
-  // function ingresosTotales () {
-  //   setIngresosMonto(sumarMonto(ingresos))
+  const sumarMonto = (lista) => {
+    const monto = lista.map((factura) => factura.monto);
+    const sumarFactura = monto.reduce(
+      (previousValue, currentValue) => previousValue + currentValue,
+      0
+    );
+    setTotal(sumarFactura);
+  };
 
-  // }
+  useEffect(() => {
+    getFacturas();
+  }, []);
 
-  // useEffect(() => {
-  //   ingresosTotales()
-  // }, [])
+  useEffect(() => {
+    getIngresos();
+  }, []);
 
   return (
     <FacturasContext.Provider
@@ -222,7 +221,8 @@ const FacturasProvider = (props) => {
         sumarMonto,
         total,
         setTotal,
-        ingresosMonto
+        ingresosMonto,
+        getIngresos,
       }}
     >
       {props.children}
