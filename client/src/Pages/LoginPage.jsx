@@ -23,7 +23,7 @@ function LoginPage() {
   }, []);
 
   return (
-    <Container maxWidth={false}>
+    <Container maxWidth={false} style={{ padding: 0 }}>
       <MenuMui isLogged={false} />
       <div className="login-container-page">
         <div className="login-form-wrapper">

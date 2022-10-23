@@ -49,13 +49,12 @@ a {
   padding: 0;
   height: 100vh;
   overflow: hidden;
-  /* place-items: center; */
 }
 
 .login-image-wrapper {
   background-image: url('./Assets/login-page.webp');
   background-size: cover;
-    height: 100vh;
+  height: 100vh;
 }
 
 .login-form-wrapper {
@@ -64,4 +63,11 @@ a {
   justify-content: center;
   align-items: center;
   padding: 2em;
+}
+
+@media screen and (max-width: 700px) {
+  .login-container-page {
+    grid-template-columns: 1fr;
+  }
+
 }
