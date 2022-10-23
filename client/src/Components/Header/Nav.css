@@ -3,6 +3,9 @@
     align-items: center;
     justify-content: space-between;
     margin: auto;
-    background-color: antiquewhite;
     padding: 0px 30px;
+    height: 30vh;
+}
+.pagina-menu {
+    color: black;
 }
