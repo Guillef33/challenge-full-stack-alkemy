@@ -40,3 +40,28 @@ a {
     background-color: #f9f9f9;
   }
 }
+
+/* Login Page */
+
+.login-container-page {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  padding: 0;
+  height: 100vh;
+  overflow: hidden;
+  /* place-items: center; */
+}
+
+.login-image-wrapper {
+  background-image: url('./Assets/login-page.webp');
+  background-size: cover;
+    height: 100vh;
+}
+
+.login-form-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2em;
+}

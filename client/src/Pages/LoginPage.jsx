@@ -7,10 +7,10 @@ import { Container, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/AuthContext";
 
-import Nav from "../Components/Nav/Nav";
+import MenuMui from "../Components/Header/MenuMui";
 
 function LoginPage() {
-  const { user, login } = useContext(AuthContext);
+  const { user, login, isLogged } = useContext(AuthContext);
 
   let navigate = useNavigate();
 
@@ -23,12 +23,17 @@ function LoginPage() {
   }, []);
 
   return (
-    <Container>
-      <Nav />
-      <Typography>
-        Bienvenido, inicia sesion para ver las facturas del mes
-      </Typography>
-      <Login />
+    <Container maxWidth={false}>
+      <MenuMui isLogged={false} />
+      <div className="login-container-page">
+        <div className="login-form-wrapper">
+          <Typography>
+            Bienvenido, inicia sesion para ver las facturas del mes
+          </Typography>
+          <Login />
+        </div>
+        <div className="login-image-wrapper"></div>
+      </div>
     </Container>
   );
 }

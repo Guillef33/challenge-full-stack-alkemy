@@ -8,7 +8,6 @@ import { Container, Box, Button, Typography } from "@mui/material";
 import ContadorPublico from "../Assets/header-img-1.png";
 import "./Home.css";
 
-import Nav from "../Components/Nav/Nav";
 import MenuMui from "../Components/Header/MenuMui";
 
 function Home() {
@@ -39,7 +38,7 @@ function Home() {
       maxWidth={false}
       style={styles.containerContainer}
     >
-      <MenuMui />
+      <MenuMui isLogged={false} />
       <Box style={styles.boxContainer}>
         <Box style={styles.wrapper}>
           <Typography variant="h2">Sistema de Gestión</Typography>

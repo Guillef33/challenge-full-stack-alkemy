@@ -1,44 +1,44 @@
-import React, { useContext } from 'react'
+import React, { useContext } from "react";
 
-import { AuthContext } from '../Context/AuthContext'
+import { AuthContext } from "../Context/AuthContext";
 
-import { Link, useParams} from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
-import Dashboard from '../Components/Dashboard/Dashboard';
-import FormularioProfile from '../Components/Profile/FormularioProfile';
+import Dashboard from "../Components/Dashboard/Dashboard";
+import FormularioProfile from "../Components/Profile/FormularioProfile";
 
-import {
-  Typography,
-  Button,
-  Box,
-} from "@mui/material";
-import Header from '../Components/Header/Header';
+import { Typography, Button, Box } from "@mui/material";
 
-import '../Components/Dashboard/Dashboard.css'
+import "../Components/Dashboard/Dashboard.css";
 
 function ProfilePage() {
+  const { login, user } = useContext(AuthContext);
 
- const { login, user } = useContext(AuthContext)
+  const { id } = useParams;
 
- const { id } = useParams;
-
- console.log(user)
+  console.log(user);
 
   return (
     <>
-    <Header />
-    <Box className='profile-container'>
-        <Typography variant='book1'>Esta es la pagina de tu perfil, { user.username  }</Typography>
+      <MenuMui isLogged={true} />
+      <Box className="profile-container">
+        <Typography variant="book1">
+          Esta es la pagina de tu perfil, {user.username}
+        </Typography>
         <Dashboard />
         <Button variant="outlined" component={Link} to="/dashboard">
           Volver a facturas
         </Button>
-        <Button variant="outlined" component={Link} to={`/editar-usuario/${id}`}>
+        <Button
+          variant="outlined"
+          component={Link}
+          to={`/editar-usuario/${id}`}
+        >
           Editar Perfil
         </Button>
-    </Box>
+      </Box>
     </>
-  )
+  );
 }
 
-export default ProfilePage
+export default ProfilePage;

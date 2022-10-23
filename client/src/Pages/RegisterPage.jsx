@@ -1,20 +1,25 @@
-import React from 'react'
+import React from "react";
 
-import Register from '../Components/Register/Register'
+import Register from "../Components/Register/Register";
 
-import {Container, Typography} from '@mui/material'
-
-import Nav from '../Components/Nav/Nav'
-
+import { Container, Typography } from "@mui/material";
+import MenuMui from "../Components/Header/MenuMui";
 
 function RegisterPage() {
   return (
-    <Container>
-        <Nav />
-        <Typography variant='book1'>Completa tus datos para ingresar</Typography>
-        <Register />
+    <Container maxWidth={false}>
+      <MenuMui isLogged={false} />
+      <div className="login-container-page">
+        <div className="login-form-wrapper">
+          <Typography variant="book1">
+            Completa tus datos para ingresar
+          </Typography>
+          <Register />
+        </div>
+        <div className="login-image-wrapper"></div>
+      </div>
     </Container>
-  )
+  );
 }
 
-export default RegisterPage
+export default RegisterPage;

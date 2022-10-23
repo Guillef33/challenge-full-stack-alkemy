@@ -70,9 +70,6 @@ function TableContainerMaster() {
 
   return (
     <>
-    
-    <ResumenDePrecios />
-
       <FilterButtons
         showAll={showAll}
         filterIngresos={filterIngresos}

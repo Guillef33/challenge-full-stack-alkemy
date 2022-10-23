@@ -4,40 +4,34 @@ import Axios from "axios";
 
 import Swal from "sweetalert2";
 
-
-
 export const AuthContext = createContext(null);
 
 const AuthProvider = (props) => {
-
-  const [user, setUser] = useState([])
+  const [user, setUser] = useState([]);
   const [loginStatus, setLoginStatus] = useState("");
-  const [login, setLogin] = useState(false)
+  const [login, setLogin] = useState(false);
 
   const loginValidations = (email, password) => {
+    const regexEmail =
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-
-  const regexEmail =
-    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-
-      if (email === "" || password === "") {
+    if (email === "" || password === "") {
       Swal.fire({
-        title: 'Error!',
-        text: 'Los campos no pueden estar vacios',
-        icon: 'error',
-        confirmButtonText: 'Continuar'
-      })
+        title: "Error!",
+        text: "Los campos no pueden estar vacios",
+        icon: "error",
+        confirmButtonText: "Continuar",
+      });
       return;
     }
 
     if (email === "" && !regexEmail.test(email)) {
       Swal.fire({
-        title: 'Error!',
-        text: 'Debes escribir una direccion de correo electronico valida',
-        icon: 'error',
-        confirmButtonText: 'Continuar'
-      })
+        title: "Error!",
+        text: "Debes escribir una direccion de correo electronico valida",
+        icon: "error",
+        confirmButtonText: "Continuar",
+      });
       return;
     }
 
@@ -45,14 +39,14 @@ const AuthProvider = (props) => {
       title: "Todo bien",
       text: "Bienvenido a Facturas App",
       icon: "success",
-      confirmButtonText: "Continuar"
-    })
-    setLogin(true)
+      confirmButtonText: "Continuar",
+    });
+    setLogin(true);
+  };
 
-  }
+  const [isLogged, setIsLogged] = useState(false);
 
- console.log(login)
-
+  console.log(login);
   return (
     <AuthContext.Provider
       value={{
@@ -62,7 +56,8 @@ const AuthProvider = (props) => {
         login,
         setUser,
         setLogin,
-        setLoginStatus
+        setLoginStatus,
+        isLogged,
       }}
     >
       {props.children}

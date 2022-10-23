@@ -1,12 +1,12 @@
 import React from "react";
 
-import Header from "../Components/Header/Header";
 import TableContainerMaster from "../Components/Table/TableContainer";
+import MenuMui from "../Components/Header/MenuMui";
 
 function FacturasPage() {
   return (
     <>
-      <Header />
+      <MenuMui isLogged={true} />
       <TableContainerMaster />
     </>
   );
