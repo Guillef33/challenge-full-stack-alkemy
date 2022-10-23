@@ -44,7 +44,7 @@ function MenuMui() {
   };
 
   return (
-    <AppBar position="static" color="secondary">
+    <AppBar position="static" color="default">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           {/* <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} /> */}
@@ -108,7 +108,6 @@ function MenuMui() {
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
           <Typography
             variant="h5"
             noWrap
@@ -125,21 +124,21 @@ function MenuMui() {
               textDecoration: "none",
             }}
           >
-            LOGO
+            CONTABILIUM
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
+                sx={{ my: 2, color: "black", display: "block" }}
               >
                 {page}
               </Button>
             ))}
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
+          <Box sx={{ flexGrow: 0, display: { xs: "none", md: "flex" }, }}>
             <Tooltip title="Open settings">
               <Button>
                 <Link to="/auth/login">Login</Link>

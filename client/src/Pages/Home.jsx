@@ -29,6 +29,7 @@ function Home() {
       alignItems: "start",
       justifyContent: "center",
       height: "70vh",
+      padding: "0px 40px",
     },
   };
 
@@ -51,16 +52,7 @@ function Home() {
             </Link>
           </Button>
         </Box>
-        {/* <img src={ContadorPublico} alt="contador-publico-imagen" /> */}
       </Box>
-      {/* <Box>
-        <Button>
-          <Link to="/auth/login" className='main-button'>Ingresa para conocer las facturas</Link>
-      </Button>
-      <Button>
-          <Link to="/auth/register" className='main-button'>Registrate como usuario</Link>
-      </Button>
-      </Box> */}
     </Container>
   );
 }
