@@ -1,19 +1,16 @@
-import { useState } from 'react'
-import AppRouter from './Router/AppRouter'
+import { useState } from "react";
+import AppRouter from "./Router/AppRouter";
 
-import FacturasProvider from './Context/FacturasContext'
-import AuthProvider from './Context/AuthContext'
+import FacturasProvider from "./Context/FacturasContext";
+import AuthProvider from "./Context/AuthContext";
+
+import { Provider } from "react-redux";
+import store from "./store";
 
 export default function App() {
-
   return (
-    <AuthProvider>
-      <FacturasProvider>
-          <AppRouter />
-      </FacturasProvider>
-    </AuthProvider>
-
-   
-  )
+    <Provider store={store}>
+      <AppRouter />
+    </Provider>
+  );
 }
-
