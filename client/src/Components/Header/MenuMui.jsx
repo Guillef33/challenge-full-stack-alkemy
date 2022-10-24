@@ -42,9 +42,13 @@ function MenuMui({ isLogged }) {
   };
 
   const pages = ["Como funciona", "Precios", "Noticias"];
-  const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
-  const pagesLogged = ["Agregar Factura", "Mi Perfil"];
+  const pagesLogged = [
+    { id: 1, texto: "Agregar Factura", url: "/agregar-factura" },
+    { id: 2, texto: "Mi Perfil", url: "/mi-perfil" },
+  ];
+
+  console.log(pagesLogged.map((page) => page.url));
   const { login, user } = useContext(AuthContext);
 
   console.log(isLogged);
@@ -65,7 +69,11 @@ function MenuMui({ isLogged }) {
               <>
                 <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
                   {pagesLogged.map((page) => (
-                    <Button>{page}</Button>
+                    <Button>
+                      <Link to={`/${page.url}`} key={page.id}>
+                        {page.texto}
+                      </Link>
+                    </Button>
                   ))}
                 </Box>
               </>
@@ -73,7 +81,11 @@ function MenuMui({ isLogged }) {
               <>
                 <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
                   {pages.map((page) => (
-                    <Button>{page}</Button>
+                    <Button>
+                      <Link key={page.id} to={`/${page.url}`}>
+                        {page.texto}
+                      </Link>
+                    </Button>
                   ))}
                 </Box>
               </>

@@ -79,7 +79,7 @@ app.get("/facturas/:id", (req, res) => {
   res.send("Get facturas por id");
 });
 
-app.post("/add-factura", (req, res) => {
+app.post("/agregar-factura", (req, res) => {
   res.send("We are here");
   const concepto = req.body.concepto;
   const monto = req.body.monto;
@@ -110,6 +110,7 @@ app.get("/facturas", (req, res) => {
     }
   );
 });
+
 
 app.get("/facturas/:id", (req, res) => {
   res.send("Get facturas by id");
