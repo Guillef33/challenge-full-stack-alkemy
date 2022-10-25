@@ -16,25 +16,21 @@ function ProfilePage() {
 
   const { id } = useParams;
 
-  console.log(user);
-
   return (
     <>
-      <MenuMui isLogged={true} />
       <Box className="profile-container">
         <Typography variant="book1">
           Esta es la pagina de tu perfil, {user.username}
         </Typography>
-        <Dashboard />
-        <Button variant="outlined" component={Link} to="/dashboard">
-          Volver a facturas
-        </Button>
         <Button
           variant="outlined"
           component={Link}
           to={`/editar-usuario/${id}`}
         >
           Editar Perfil
+        </Button>
+        <Button variant="outlined" component={Link} to="/dashboard">
+          Volver al dashboard
         </Button>
       </Box>
     </>

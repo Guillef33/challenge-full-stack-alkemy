@@ -46,12 +46,10 @@ function MenuMui({ isLogged }) {
   const pagesLogged = [
     { id: 1, texto: "Agregar Factura", url: "/agregar-factura" },
     { id: 2, texto: "Mi Perfil", url: "/mi-perfil" },
+    { id: 3, texto: "Ver todas las facturas", url: "/ultimas-facturas" },
   ];
 
-  console.log(pagesLogged.map((page) => page.url));
   const { login, user } = useContext(AuthContext);
-
-  console.log(isLogged);
 
   return (
     <AppBar position="static" color="default">
@@ -61,10 +59,26 @@ function MenuMui({ isLogged }) {
           sx={{ display: "flex", justifyContent: "space-between" }}
         >
           <Box>
-            <img src={Logo} alt="Logo de la App" style={{ height: "30px" }} />
+            {isLogged ? (
+              <Link to="/dashboard">
+                <img
+                  src={Logo}
+                  alt="Logo de la App"
+                  style={{ height: "30px" }}
+                />
+              </Link>
+            ) : (
+              <Link to="/">
+                <img
+                  src={Logo}
+                  alt="Logo de la App"
+                  style={{ height: "30px" }}
+                />
+              </Link>
+            )}
           </Box>
 
-          <Box>
+          {/* <Box>
             {isLogged ? (
               <>
                 <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
@@ -90,7 +104,7 @@ function MenuMui({ isLogged }) {
                 </Box>
               </>
             )}
-          </Box>
+          </Box> */}
 
           <Box>
             {isLogged ? (

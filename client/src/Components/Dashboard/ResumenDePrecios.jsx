@@ -3,46 +3,59 @@ import { Button, Paper, Typography, Box } from "@mui/material";
 
 import { FacturasContext } from "../../Context/FacturasContext";
 
+import "./Dashboard.css";
+
 function ResumenDePrecios() {
-  const { listaFacturas, ingresos, egresos, total, getIngresos } =
+  const { listaFacturas, ingresos, egresos, total, getIngresos, sumarMonto } =
     useContext(FacturasContext);
 
-  const [plata, setPlata] = useState(0);
-  const [plataEgresos, setPlataEgresos] = useState(0);
+  const [ingresosLocal, setIngresosLocal] = useState(0);
+  const [egresosLocal, setEgresosLocal] = useState(0);
+  const [resultadoTotal, setResultadoTotal] = useState(0);
 
   useEffect(() => {
     getIngresos();
-    const monto = ingresos.map((ingreso) => ingreso.monto);
-    const plata = monto.reduce(
+    const lista = ingresos.map((ingreso) => ingreso.monto);
+    const monto = lista.reduce(
       (previousValue, currentValue) => previousValue + currentValue,
       0
     );
-    setPlata(plata);
+    setIngresosLocal(monto);
   }, []);
 
   useEffect(() => {
     getIngresos();
-    const monto = egresos.map((egreso) => egreso.monto);
-    const plataEgresos = monto.reduce(
+    const lista = egresos.map((egreso) => egreso.monto);
+    const monto = lista.reduce(
       (previousValue, currentValue) => previousValue + currentValue,
       0
     );
-    setPlataEgresos(plataEgresos);
+    setEgresosLocal(monto);
   }, []);
+
+  // function resultado () {
+  //   setResultadoTotal(ingresosLocal - egresosLocal  )
+  // }
 
   return (
-    <Box>
+    <Box className="stats-container">
       <Box>
         <Typography variant="book1">Los ingresos son de:</Typography>
-        <Typography variant="h3">{plata}</Typography>
+        <Typography variant="h3">{ingresosLocal}</Typography>
       </Box>
       <Box>
         <Typography variant="book1">Los egresos son de:</Typography>
-        <Typography variant="h3">{plataEgresos}</Typography>
+        <Typography variant="h3">{egresosLocal}</Typography>
       </Box>
       <Box>
         <Typography variant="book1">El total es:</Typography>
-        <Typography variant="h3"> {total}</Typography>
+        <Typography
+          variant="h3"
+          // className={'positivo' : 'negativo'}
+        >
+          {" "}
+          {ingresosLocal - egresosLocal}
+        </Typography>
       </Box>
     </Box>
   );

@@ -64,53 +64,66 @@ function AgregarFactura({}) {
   };
 
   return (
-    <Box onSubmit={handleSubmit} component="form" noValidate sx={{ mt: 1 }}>
-      <FormControl fullWidth>
-        <TextField
-          margin="normal"
-          label="Concepto"
-          name="concepto"
-          autoFocus
-          type="text"
-        />
-        <TextField
-          margin="normal"
-          label="Monto"
-          name="monto"
-          autoFocus
-          type="number"
-        />
+    <div className="login-container-page">
+      <Box
+        onSubmit={handleSubmit}
+        component="form"
+        noValidate
+        className="login-form-wrapper"
+      >
+        <FormControl fullWidth>
+          <TextField
+            margin="normal"
+            label="Concepto"
+            name="concepto"
+            autoFocus
+            type="text"
+          />
+          <TextField
+            margin="normal"
+            label="Monto"
+            name="monto"
+            autoFocus
+            type="number"
+          />
 
-        <Select label="Tipo" name="tipo" value={tipo} onChange={selectTipo}>
-          <MenuItem value="ingreso">Ingreso</MenuItem>
-          <MenuItem value="egreso">Egreso</MenuItem>
-        </Select>
-        <TextField
-          name="fecha"
-          label="Fecha"
-          InputLabelProps={{ shrink: true, required: true }}
-          type="date"
+          <Select label="Tipo" name="tipo" value={tipo} onChange={selectTipo}>
+            <MenuItem value="ingreso">Ingreso</MenuItem>
+            <MenuItem value="egreso">Egreso</MenuItem>
+          </Select>
+          <TextField
+            name="fecha"
+            label="Fecha"
+            InputLabelProps={{ shrink: true, required: true }}
+            type="date"
+            sx={{ mt: 3, mb: 2 }}
+          />
+          <Select
+            label="Categoria"
+            name="categoria"
+            value={categoria}
+            onChange={selectCategoria}
+          >
+            <MenuItem value="entretenimiento">Entretenimiento</MenuItem>
+            <MenuItem value="comida">Comida</MenuItem>
+            <MenuItem value="hogar">Hogar</MenuItem>
+          </Select>
+        </FormControl>
+
+        <Button
+          type="submit"
+          fullWidth
+          variant="contained"
           sx={{ mt: 3, mb: 2 }}
-        />
-        <Select
-          label="Categoria"
-          name="categoria"
-          value={categoria}
-          onChange={selectCategoria}
         >
-          <MenuItem value="entretenimiento">Entretenimiento</MenuItem>
-          <MenuItem value="comida">Comida</MenuItem>
-          <MenuItem value="hogar">Hogar</MenuItem>
-        </Select>
-      </FormControl>
-
-      <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
-        Publicar
-      </Button>
-      <Button variant="outlined" component={Link} to="/dashboard">
-        Volver a facturas
-      </Button>
-    </Box>
+          Publicar
+        </Button>
+        <Button variant="outlined" component={Link} to="/dashboard">
+          Volver a facturas
+        </Button>
+      </Box>
+      <div className="login-image-wrapper"></div>
+    </div>
   );
 }
 
