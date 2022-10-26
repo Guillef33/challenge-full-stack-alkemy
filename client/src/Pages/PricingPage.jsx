@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 // import { makeStyles } from "@material-ui/styles";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
@@ -12,7 +12,7 @@ import Link from "@material-ui/core/Link";
 import Switch from "@material-ui/core/Switch";
 
 export default function Pricing(props) {
-  const [state, setState] = React.useState({
+  const [state, setState] = useState({
     checkbox: true,
   });
 
@@ -27,27 +27,22 @@ export default function Pricing(props) {
           <Box mb={3}>
             <Container maxWidth="sm">
               <Typography variant="overline" color="textSecondary">
-                {"badge"}
+                Conoce nuestros planes
               </Typography>
-              <Typography variant="h3" component="h2" gutterBottom={true}>
-                <Typography variant="h3" component="span" color="primary">
-                  {"header-p1"}{" "}
-                </Typography>
-                <Typography variant="h3" component="span">
-                  {"header-p2"}
-                </Typography>
+              <Typography variant="h6" gutterBottom={true}>
+                Planes a tu medida
               </Typography>
               <Typography
                 variant="subtitle1"
                 color="textSecondary"
                 paragraph={true}
               >
-                {"description"}
+                {"Segui avanzando y mejora tus finanzas"}
               </Typography>
 
               <div>
                 <Typography variant="subtitle1" component="span">
-                  {"option1"}
+                  {"Mensual"}
                 </Typography>
                 &nbsp;{" "}
                 <Switch
@@ -58,7 +53,7 @@ export default function Pricing(props) {
                 />{" "}
                 &nbsp;
                 <Typography variant="subtitle1" component="span">
-                  {"option2"}
+                  {"Anual"}
                 </Typography>
               </div>
             </Container>
@@ -66,42 +61,32 @@ export default function Pricing(props) {
           <Grid container spacing={3}>
             <Grid item xs={12} md={4}>
               <Card variant="outlined">
-                <CardHeader
-                  title={"01_title"}
-                  className="cardHeader"
-                ></CardHeader>
+                <CardHeader title="Basico" className="cardHeader"></CardHeader>
                 <CardContent>
                   <Box px={1}>
-                    <Typography variant="h3" component="h2" gutterBottom={true}>
-                      {"01_price"}
-                      <Typography
-                        variant="h6"
-                        color="textSecondary"
-                        component="span"
-                      >
-                        {"01_suffix"}
-                      </Typography>
+                    <Typography variant="h6" gutterBottom={true}>
+                      $ 10
                     </Typography>
                     <Typography
                       color="textSecondary"
                       variant="subtitle1"
                       component="p"
                     >
-                      {"01_benefit1"}
+                      {"Hasta 250 facturas"}
                     </Typography>
                     <Typography
                       color="textSecondary"
                       variant="subtitle1"
                       component="p"
                     >
-                      {"01_benefit2"}
+                      {"Filtros inteligentes"}
                     </Typography>
                     <Typography
                       color="textSecondary"
                       variant="subtitle1"
                       component="p"
                     >
-                      {"01_benefit3"}
+                      {"1 usuario"}
                     </Typography>
                     <Typography
                       color="textSecondary"
@@ -109,7 +94,7 @@ export default function Pricing(props) {
                       component="p"
                       paragraph={true}
                     >
-                      {"01_benefit4"}
+                      {"Exportar en XLS y PDF"}
                     </Typography>
                   </Box>
                   <Button
@@ -117,13 +102,105 @@ export default function Pricing(props) {
                     color="primary"
                     className="primaryAction"
                   >
-                    {"01_primary-action"}
+                    {"Comprar"}
                   </Button>
-                  <Box mt={2}>
-                    <Link href="#" color="primary">
-                      {"03_secondary-action"}
-                    </Link>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={12} md={4}>
+              <Card variant="outlined">
+                <CardHeader title="PYME" className="cardHeader"></CardHeader>
+                <CardContent>
+                  <Box px={1}>
+                    <Typography variant="h6" gutterBottom={true}>
+                      $ 23
+                    </Typography>
+                    <Typography
+                      color="textSecondary"
+                      variant="subtitle1"
+                      component="p"
+                    >
+                      {"Hasta 1000 facturas"}
+                    </Typography>
+                    <Typography
+                      color="textSecondary"
+                      variant="subtitle1"
+                      component="p"
+                    >
+                      {"Filtros inteligentes"}
+                    </Typography>
+                    <Typography
+                      color="textSecondary"
+                      variant="subtitle1"
+                      component="p"
+                    >
+                      {"2 usuario"}
+                    </Typography>
+                    <Typography
+                      color="textSecondary"
+                      variant="subtitle1"
+                      component="p"
+                      paragraph={true}
+                    >
+                      {"Exportar en XLS y PDF"}
+                    </Typography>
                   </Box>
+                  <Button
+                    variant="outlined"
+                    color="primary"
+                    className="primaryAction"
+                  >
+                    {"Comprar"}
+                  </Button>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={12} md={4}>
+              <Card variant="outlined">
+                <CardHeader title="Experto" className="cardHeader"></CardHeader>
+                <CardContent>
+                  <Box px={1}>
+                    <Typography variant="h6" gutterBottom={true}>
+                      $ 49
+
+                    </Typography>
+                    <Typography
+                      color="textSecondary"
+                      variant="subtitle1"
+                      component="p"
+                    >
+                      {"Facturas ilimitadas"}
+                    </Typography>
+                    <Typography
+                      color="textSecondary"
+                      variant="subtitle1"
+                      component="p"
+                    >
+                      {"Business Intelligence"}
+                    </Typography>
+                    <Typography
+                      color="textSecondary"
+                      variant="subtitle1"
+                      component="p"
+                    >
+                      {"Usuarios ilimitados"}
+                    </Typography>
+                    <Typography
+                      color="textSecondary"
+                      variant="subtitle1"
+                      component="p"
+                      paragraph={true}
+                    >
+                      {"Exportar en XLS y PDF"}
+                    </Typography>
+                  </Box>
+                  <Button
+                    variant="outlined"
+                    color="primary"
+                    className="primaryAction"
+                  >
+                    {"Comprar"}
+                  </Button>
                 </CardContent>
               </Card>
             </Grid>

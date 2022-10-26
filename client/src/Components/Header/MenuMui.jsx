@@ -17,7 +17,7 @@ import { Avatar } from "@mui/material";
 
 import { Link } from "react-router-dom";
 
-import Logo from "../../Assets/logo_header.png";
+import Logo from "../../Assets/logo-accountancy.png";
 import "./Nav.css";
 
 import { AuthContext } from "../../Context/AuthContext";
@@ -64,7 +64,7 @@ function MenuMui({ isLogged }) {
                 <img
                   src={Logo}
                   alt="Logo de la App"
-                  style={{ height: "30px" }}
+                  style={{ height: "70px" }}
                 />
               </Link>
             ) : (
@@ -72,7 +72,7 @@ function MenuMui({ isLogged }) {
                 <img
                   src={Logo}
                   alt="Logo de la App"
-                  style={{ height: "30px" }}
+                  style={{ height: "70px" }}
                 />
               </Link>
             )}

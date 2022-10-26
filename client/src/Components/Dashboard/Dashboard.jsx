@@ -19,7 +19,6 @@ function Dashboard() {
 
   return (
     <div className="dashboard-card-container">
-      <Listado />
       <ResumenDePrecios />
     </div>
   );

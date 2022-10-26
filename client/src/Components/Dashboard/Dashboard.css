@@ -1,8 +1,8 @@
-.dashboard-card-container {
+/* .dashboard-card-container {
     display: grid;
     grid-template-columns: 1fr 3fr;
     grid-gap: 1em;
-}
+} */
 
 .profile-container {
     height: 100vh;

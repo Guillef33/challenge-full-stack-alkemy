@@ -69,7 +69,7 @@ function TableContainerMaster() {
   }, []);
 
   return (
-    <>
+    <div style={{ display: "flex", flexDirection: "column", height: "80vh" }}>
       <FilterButtons
         showAll={showAll}
         filterIngresos={filterIngresos}
@@ -99,7 +99,7 @@ function TableContainerMaster() {
           </TableBody>
         </Table>
       </TableContainer>
-    </>
+    </div>
   );
 }
 
