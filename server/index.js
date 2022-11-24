@@ -80,7 +80,7 @@ app.get("/facturas/:id", (req, res) => {
 });
 
 app.post("/agregar-factura", (req, res) => {
-  res.send("We are here");
+  // res.send("We are here");
   const concepto = req.body.concepto;
   const monto = req.body.monto;
   const fecha = req.body.fecha;
@@ -234,7 +234,6 @@ app.post("/login", (req, res) => {
 });
 
 app.post("/register", (req, res) => {
-  // res.send("We are here");
   const username = req.body.username;
   const password = req.body.password;
   const email = req.body.email;

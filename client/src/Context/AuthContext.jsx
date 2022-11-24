@@ -16,6 +16,7 @@ const AuthProvider = (props) => {
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
     if (email === "" || password === "") {
+      // Sweet Alert
       Swal.fire({
         title: "Error!",
         text: "Los campos no pueden estar vacios",

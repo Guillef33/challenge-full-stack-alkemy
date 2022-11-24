@@ -9,7 +9,6 @@ import Home from "../pages/Home";
 
 const PrivateRoute = (props) => {
   const { login } = useContext(AuthContext);
-  console.log(login);
 
   useEffect(() => {
       localStorage.getItem("loginState", login);

@@ -26,6 +26,8 @@ import Swal from "sweetalert2";
 import "./FilterTable.css";
 import FilterButtons from "./FilterButtons";
 import ResumenDePrecios from "../Dashboard/ResumenDePrecios";
+import { getFacturas } from "../../store/slices/facturas";
+import { useDispatch } from "react-redux";
 
 function TableContainerMaster() {
   const {
@@ -68,8 +70,14 @@ function TableContainerMaster() {
     setPlataEgresos(plataEgresos);
   }, []);
 
+  const dispatch = useDispatch();
+  useEffect(() => {
+    console.log("Get facturas");
+    dispatch(getFacturas());
+  }, []);
+
   return (
-    <div style={{ display: "flex", flexDirection: "column", height: "80vh" }}>
+    <div style={{ display: "flex", flexDirection: "column", height: "80vh " }}>
       <FilterButtons
         showAll={showAll}
         filterIngresos={filterIngresos}

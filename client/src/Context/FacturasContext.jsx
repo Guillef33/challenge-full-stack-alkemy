@@ -41,7 +41,7 @@ const FacturasProvider = (props) => {
   const [egresosMonto, setEgresosMonto] = useState();
   const [totalMonto, setTotalMonto] = useState();
 
-  function cancelarTurno(id) {
+  function cancelarFactura(id) {
     Axios.delete(`http://localhost:3050/delete/${id}`, {}).then((response) => {
       Swal.fire({
         title: "Factura eliminada",
@@ -83,6 +83,17 @@ const FacturasProvider = (props) => {
     setIngresos(listado);
     return listado;
   };
+
+  // const [ingresos, setIngresos] = useState([])
+
+    // const filterIngresos = () => {
+    //   data.filter(
+    //     (ingreso) => ingreso.tipo === "outcome"
+    //   );
+
+    //   setIngresos(listado);
+    //   return listado;
+    // };
 
   const filterEgresos = () => {
     let listado = listaFacturas.filter((egreso) => egreso.tipo === "egreso");
@@ -195,7 +206,6 @@ const FacturasProvider = (props) => {
         setIngresos,
         egresos,
         setEgresos,
-        cancelarTurno,
         showAll,
         getFacturas,
         filterIngresos,

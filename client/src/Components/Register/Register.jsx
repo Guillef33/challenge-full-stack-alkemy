@@ -15,7 +15,6 @@ export default function Form() {
   const [username, setUsername] = useState("");
   const [newUser, setNewUser] = useState({});
   const [submitted, setSubmitted] = useState(false);
-
   const { loginValidations } = useContext(AuthContext);
 
   Axios.defaults.withCredentials = true;

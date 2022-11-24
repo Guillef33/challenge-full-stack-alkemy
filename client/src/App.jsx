@@ -3,17 +3,19 @@ import AppRouter from './Router/AppRouter'
 
 import FacturasProvider from './Context/FacturasContext'
 import AuthProvider from './Context/AuthContext'
+import { Provider } from 'react-redux'
+import { store } from './store/store'
 
 export default function App() {
 
   return (
-    <AuthProvider>
-      <FacturasProvider>
+    <Provider store={store}>
+      <AuthProvider>
+        <FacturasProvider>
           <AppRouter />
-      </FacturasProvider>
-    </AuthProvider>
-
-   
-  )
+        </FacturasProvider>
+      </AuthProvider>
+    </Provider>
+  );
 }
 
