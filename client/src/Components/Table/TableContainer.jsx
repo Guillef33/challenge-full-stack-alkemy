@@ -1,9 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
 import {
-  Button,
-  TableFooter,
-  Select,
-  MenuItem,
   FormControl,
   InputLabel,
   Table,
@@ -13,8 +9,6 @@ import {
   TableHead,
   TableRow,
   Paper,
-  Typography,
-  Box,
 } from "@mui/material";
 
 import Axios from "axios";
@@ -27,7 +21,7 @@ import "./FilterTable.css";
 import FilterButtons from "./FilterButtons";
 import ResumenDePrecios from "../Dashboard/ResumenDePrecios";
 import { getFacturas } from "../../store/slices/facturas";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 function TableContainerMaster() {
   const {
@@ -37,7 +31,6 @@ function TableContainerMaster() {
     showIngresos,
     showEgresos,
     showDataFilterCategory,
-    listaFacturas,
     ingresos,
     egresos,
     dataFilterCategory,
@@ -71,8 +64,11 @@ function TableContainerMaster() {
   }, []);
 
   const dispatch = useDispatch();
+
+  const { facturas, startLoadingFacturas, setFacturas, isLoading } =
+    useSelector((state) => state.facturas);
+
   useEffect(() => {
-    console.log("Get facturas");
     dispatch(getFacturas());
   }, []);
 
@@ -101,7 +97,7 @@ function TableContainerMaster() {
               <RowMap lista={showIngresos ? ingresos : egresos} />
             )}
             {!showIngresos && !showEgresos && !showDataFilterCategory && (
-              <RowMap lista={listaFacturas} />
+              <RowMap lista={facturas} />
             )}
             {showDataFilterCategory && <RowMap lista={dataFilterCategory} />}
           </TableBody>

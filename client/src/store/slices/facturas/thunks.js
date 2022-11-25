@@ -5,7 +5,7 @@ export const getFacturas = (page = 0) => {
   return async (dispatch, getState) => {
     dispatch(startLoadingFacturas());
 
-    const { data } = await facturasAPI.get(`/facturas`);
+    const { data } = await facturasAPI.get(`/facturas?limit=3&offset=0`);
     console.log(data);
 
     dispatch(
